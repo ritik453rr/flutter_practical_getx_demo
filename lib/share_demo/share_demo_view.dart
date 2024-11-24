@@ -4,7 +4,7 @@ import 'package:share_plus/share_plus.dart';
 
 class ShareDemoView extends StatelessWidget {
   const ShareDemoView({super.key});
-  final String msg = 'Hello Flutter';
+  final String msg = 'Hello jiii';
   void shareText() {
     Share.share(msg);
   }
@@ -15,12 +15,26 @@ class ShareDemoView extends StatelessWidget {
     Share.shareXFiles([image], text: msg);
   }
 
+  // Share the current screen's route (URL-like)
+  void shareCurrentRoute(BuildContext context) {
+    // Get the current route name
+    String currentRoute =
+        ModalRoute.of(context)?.settings.name ?? 'unknown route';
+
+    // Here we treat the route name as the "URL" of the current screen
+    String url =
+        'https://yourapp.com/$currentRoute'; // Assuming your app uses deep links or similar routes
+
+    // Share the "URL" of the current screen
+    Share.share('Check out this link: $url');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Share Demo",
+          "Share ji Demo",
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
@@ -33,8 +47,9 @@ class ShareDemoView extends StatelessWidget {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
             onPressed: () {
-              shareText();
+              //shareText();
               //shareImage();
+              shareCurrentRoute(context);
             },
             child: const Row(
               children: [
