@@ -1,6 +1,3 @@
-import 'package:demo/common/languages/translation_services.dart';
-import 'package:demo/navigation/app_pages.dart';
-import 'package:demo/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,10 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.signIn,
-      getPages: AppPages.pages,
-      translationsKeys: TranslationServices().translations,
-      locale: const Locale('en', 'US'),
+     home: Text("Demo"),
     );
   }
 }
