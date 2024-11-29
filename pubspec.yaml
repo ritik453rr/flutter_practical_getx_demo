@@ -42,6 +42,8 @@ dependencies:
   colorful_safe_area: ^1.0.0
   share_plus: ^7.2.2
   image_picker: ^1.0.8
+  flutter_localization: ^0.2.1
+  flutter_story: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -66,8 +68,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/
+    - assets/svg_images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -82,17 +85,21 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Roboto Bold
+    - family: Montserrat Regular
       fonts:
-        - asset: assets/roboto_bold.ttf
+        - asset: assets/fonts/montserrat_regular.ttf
 
-    - family: Roboto Medium
+    - family: Montserrat Medium
       fonts:
-        - asset: assets/roboto_medium.ttf 
+        - asset: assets/fonts/montserrat_medium.ttf 
 
-    - family: Roboto Regular
+    - family: Montserrat Semibold
       fonts:
-        - asset: assets/roboto_regular.ttf     
+        - asset: assets/fonts/montserrat_semibold.ttf 
+
+    - family: Montserrat Bold
+      fonts:
+        - asset: assets/fonts/montserrat_bold.ttf         
 
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic

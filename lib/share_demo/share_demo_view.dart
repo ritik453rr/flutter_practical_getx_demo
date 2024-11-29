@@ -1,31 +1,36 @@
+import 'package:demo/common/app_fonts.dart';
+import 'package:demo/common/common_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:demo/common/language/language_string.dart';
 
 class ShareDemoView extends StatelessWidget {
   const ShareDemoView({super.key});
-  final String msg = 'Hello jiii';
-  void shareText() {
-    Share.share(msg);
-  }
 
-  void shareImage() async {
+  // A constant string message used for sharing
+  final String msg = 'Hello Demo';
+
+  /// Shares a text message using the Share package.
+  void shareText() => Share.share(msg);
+
+  /// Shares an image from the device's gallery.
+  Future<void> shareImage() async {
+    // Picking an image from the gallery
     XFile? image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image == null) return;
-    Share.shareXFiles([image], text: msg);
+
+    // If an image is picked, share it with the message
+    if (image != null) {
+      Share.shareXFiles([image], text: msg);
+    }
   }
 
-  // Share the current screen's route (URL-like)
+  /// Shares the current route URL of the app.
   void shareCurrentRoute(BuildContext context) {
-    // Get the current route name
-    String currentRoute =
+    final currentRoute =
         ModalRoute.of(context)?.settings.name ?? 'unknown route';
-
-    // Here we treat the route name as the "URL" of the current screen
-    String url =
-        'https://yourapp.com/$currentRoute'; // Assuming your app uses deep links or similar routes
-
-    // Share the "URL" of the current screen
+    final url = 'https://yourapp.com/$currentRoute';
     Share.share('Check out this link: $url');
   }
 
@@ -34,38 +39,32 @@ class ShareDemoView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Share ji Demo",
+          "Image Picker, Flutter Share",
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
       body: Center(
-        child: SizedBox(
-          width: 150,
-          height: 35,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-            onPressed: () {
-              //shareText();
-              //shareImage();
-              shareCurrentRoute(context);
-            },
-            child: const Row(
-              children: [
-                Icon(
-                  Icons.share,
-                  color: Colors.white,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  "Share Page",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue,
+          ),
+          onPressed: () {
+            shareImage();
+            // Get.updateLocale(
+            //   const Locale('ur', 'PK'),
+            // );
+          }, // Triggering the shareImage function
+          child: Row(
+            mainAxisSize:
+                MainAxisSize.min, // Ensure the button size fits its content
+            children: [
+              const Icon(Icons.share, color: Colors.white, size: 19),
+              const SizedBox(width: 5),
+              CommonUi.commomText(LanguageString.share.tr,
+                  fontFamily: AppFonts.medium, color: Colors.white),
+            ],
           ),
         ),
       ),
