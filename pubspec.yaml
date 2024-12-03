@@ -46,6 +46,8 @@ dependencies:
   flutter_story: ^1.0.1
   get_storage: ^2.1.1
   persistent_bottom_nav_bar: ^6.2.1
+  firebase_core: ^2.27.0
+  google_sign_in: ^6.2.1
 
 dev_dependencies:
   flutter_test:

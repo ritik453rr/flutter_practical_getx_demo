@@ -1,6 +1,6 @@
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:demo/instagram_clone/common/app_colors.dart';
-import 'package:demo/instagram_clone/common/app_fonts.dart';
+import 'package:demo/instagram_clone/common/instagram_fonts.dart';
 import 'package:demo/instagram_clone/common/instagram_keys.dart';
 import 'package:demo/instagram_clone/common/common_logics.dart';
 import 'package:demo/instagram_clone/common/common_ui.dart';
@@ -75,8 +75,37 @@ class InstagramLoginView extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    //Login with google button
-                    CommonUi.setSvgImage("google"),
+                    //Login with google
+                    Obx(
+                      () => loginController.isGoogleSignIn.value
+                          ? const CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                  AppColors.borderGray),
+                            )
+                          : GestureDetector(
+                              onTap: () {
+                                loginController.signInWithGoogle();
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  CommonUi.commomText("Log in with google",
+                                      fontSize: 16,
+                                      fontFamily: InstagramFonts.medium),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    child: CommonUi.setSvgImage("google_icon"),
+                                  ),
+                                  IconButton(
+                                      onPressed: () {
+                                        loginController.signOut();
+                                      },
+                                      icon: const Icon(Icons.logout),),
+                                ],
+                              ),
+                            ),
+                    ),
                     const SizedBox(height: 70),
                   ],
                 ),
@@ -122,7 +151,7 @@ class InstagramLoginView extends StatelessWidget {
       child: CommonUi.commomText(
         LanguageString.login.tr,
         fontSize: 14,
-        fontFamily: AppFonts.semibold,
+        fontFamily: InstagramFonts.semibold,
         color: AppColors.customWhite,
       ),
     );

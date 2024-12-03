@@ -1,4 +1,4 @@
-import 'package:demo/instagram_clone/common/app_fonts.dart';
+import 'package:demo/instagram_clone/common/instagram_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -6,7 +6,7 @@ class CommonUi {
   static Widget commomText(String? text,
       {double fontSize = 14,
       Color color = Colors.black,
-      String fontFamily = AppFonts.regular}) {
+      String fontFamily = InstagramFonts.regular}) {
     return Text(
       text ?? "",
       style:

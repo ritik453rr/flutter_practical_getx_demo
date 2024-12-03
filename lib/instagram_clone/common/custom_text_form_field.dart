@@ -1,5 +1,5 @@
 import 'package:demo/instagram_clone/common/app_colors.dart';
-import 'package:demo/instagram_clone/common/app_fonts.dart';
+import 'package:demo/instagram_clone/common/instagram_fonts.dart';
 import 'package:demo/instagram_clone/login/instagram_login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -40,7 +40,7 @@ class CustomTextFormField extends StatelessWidget {
         hintStyle: const TextStyle(
             color: AppColors.hintGray,
             fontSize: 14,
-            fontFamily: AppFonts.regular),
+            fontFamily: InstagramFonts.regular),
         hoverColor: color,
         fillColor: color,
         filled: true,
