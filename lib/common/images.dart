@@ -1,6 +1,8 @@
 class ImgRes {
-  /// Png Img
-  static String pngBaseUrl = "assets/images/png_images/";
 
+  /// Png Base Url
+  static String pngBaseUrl = "assets/images/png_images/";
+  
+  /// Pngs
   static String wave = "${pngBaseUrl}wave.png";
 }
