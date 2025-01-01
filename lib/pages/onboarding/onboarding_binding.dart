@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:getx_demo/onboarding/onboarding_controller.dart';
+import 'package:getx_demo/pages/onboarding/onboarding_controller.dart';
 
 class OnboardingBinding extends Bindings {
   @override
