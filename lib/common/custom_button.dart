@@ -8,12 +8,16 @@ class CustomButton extends StatelessWidget {
     this.height,
     this.backgroundColor,
     this.width,
+    this.vericalPadding=15,
+    this.horizontalPadding=15,
   });
   final void Function()? onPressed;
   final Widget? child;
   final double? height;
   final Color? backgroundColor;
   final double? width;
+  final double vericalPadding;
+  final double horizontalPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +28,9 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
-          padding: const EdgeInsets.symmetric(
-            vertical: 15,
+          padding:  EdgeInsets.symmetric(
+            vertical:vericalPadding,
+            horizontal: horizontalPadding,
           ),
         ),
         child: child,

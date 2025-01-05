@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/common_ui.dart';
-import 'package:getx_demo/pages/onboarding/onboarding_controller.dart';
+import 'package:getx_demo/pages/age_selection/age_selection_controller.dart';
 import 'package:wheel_slider/wheel_slider.dart';
 
-class OnboardingView extends StatefulWidget {
-  const OnboardingView({super.key});
+class AgeSelectionView extends StatefulWidget {
+  const AgeSelectionView({super.key});
 
   @override
-  State<OnboardingView> createState() => _OnboardingViewState();
+  State<AgeSelectionView> createState() => _AgeSelectionViewState();
 }
 
-final OnboardingController onboardingController = Get.find();
+final AgeSelectionController onboardingController = Get.find();
 
-class _OnboardingViewState extends State<OnboardingView> {
+class _AgeSelectionViewState extends State<AgeSelectionView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
