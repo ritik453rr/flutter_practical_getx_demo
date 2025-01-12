@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:getx_demo/pages/age_selection/age_selection_binding.dart';
 import 'package:getx_demo/pages/age_selection/age_selection_view.dart';
+import 'package:getx_demo/pages/calendar/calendar_binding.dart';
+import 'package:getx_demo/pages/calendar/calendar_view.dart';
 import 'package:getx_demo/pages/verify_phone/verify_phone_binding.dart';
 import 'package:getx_demo/pages/verify_phone/verify_phone_view.dart';
 import 'package:getx_demo/routing/app_routes.dart';
@@ -16,6 +18,11 @@ class RoutesManager {
       name: AppRoutes.routeVerifyPhone,
       page: () => const VerifyPhoneView(),
       binding: VerifyPhonBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.routeCalendar,
+      page: () => const CalendarView(),
+      binding: CalendarBinding(),
     ),
   ];
 }
