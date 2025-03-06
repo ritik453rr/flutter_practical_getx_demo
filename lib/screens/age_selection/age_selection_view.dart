@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/common_ui.dart';
-import 'package:getx_demo/pages/age_selection/age_selection_controller.dart';
+import 'package:getx_demo/screens/age_selection/age_selection_controller.dart';
 import 'package:wheel_slider/wheel_slider.dart';
 
 class AgeSelectionView extends StatefulWidget {

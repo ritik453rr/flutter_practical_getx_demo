@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_demo/routing/routes_manager.dart';
+import 'package:getx_demo/routing/app_pages.dart';
 import 'routing/app_routes.dart';
 
 void main() {
@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.routeCalendar,
-      getPages: RoutesManager.pages,
+      initialRoute: AppRoutes.routeRefreshPage,
+      getPages: AppPages.pages,
       defaultTransition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 300),
     );
