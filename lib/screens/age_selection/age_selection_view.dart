@@ -35,7 +35,7 @@ class _AgeSelectionViewState extends State<AgeSelectionView> {
                 width: Get.width,
                 color: AppColors.deepPurple,
               ),
-              CommonUI.setPngImg("wave"),
+              CommonUi.setPngImg("wave"),
             ],
           ),
           Padding(
