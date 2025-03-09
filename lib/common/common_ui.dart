@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/app_fonts.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class CommonUi {
   /// Set PNG image
@@ -49,6 +50,50 @@ class CommonUi {
   }) {
     return SizedBox(
       height: height,
+    );
+  }
+
+  /// function to build refresh header
+  static Widget refreshHeader() {
+    return ClassicHeader(
+      releaseText: "",
+      refreshingText: "",
+      idleText: "",
+      completeText: "",
+      idleIcon: CircularProgressIndicator(
+        strokeWidth: 2.0,
+        valueColor: AlwaysStoppedAnimation(Colors.grey[400]),
+      ),
+      releaseIcon: CircularProgressIndicator(
+        strokeWidth: 2.0,
+        valueColor: AlwaysStoppedAnimation(Colors.grey[400]),
+      ),
+      completeIcon: CircularProgressIndicator(
+        strokeWidth: 2.0,
+        valueColor: AlwaysStoppedAnimation(Colors.grey[400]),
+      ),
+      refreshingIcon: CircularProgressIndicator(
+        strokeWidth: 2.0,
+        valueColor: AlwaysStoppedAnimation(Colors.grey[400]),
+      ),
+    );
+  }
+
+  /// function to build refresh footer.
+  static Widget refreshFooter() {
+    return ClassicFooter(
+      idleText: 'No more data',
+      idleIcon: null,
+      loadingIcon: SizedBox(
+        width: 25.0,
+        height: 25.0,
+        child: CircularProgressIndicator(
+          strokeWidth: 2.0,
+          valueColor: AlwaysStoppedAnimation(
+            Colors.grey[400]!,
+          ), // Progress indicator color
+        ),
+      ),
     );
   }
 }
