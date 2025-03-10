@@ -169,7 +169,7 @@ class VerifyPhoneView extends GetView<VerifyPhoneController> {
                       fontFamily: AppFonts.fontSemiBold),
                 ),
               ),
-              CommonUi.bottomSpace(),
+              const SizedBox(height: 30,),
             ],
           ),
         ),

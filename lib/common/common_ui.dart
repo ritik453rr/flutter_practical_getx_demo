@@ -6,8 +6,13 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class CommonUi {
   /// Set PNG image
-  static Widget setPngImg(String imgName,
-      {BoxFit? fit, Color? color, double? width, double? height}) {
+  static Widget setPngImg(
+    String imgName, {
+    Color? color,
+    double? width,
+    double? height,
+    BoxFit? fit,
+  }) {
     return Image.asset(
       'assets/images/png_images/$imgName.png',
       fit: fit,
@@ -18,11 +23,13 @@ class CommonUi {
   }
 
   /// Set SVG image
-  static Widget setSvgImg(String imgName,
-      {BoxFit fit = BoxFit.contain,
-      Color? color,
-      double? width,
-      double? height}) {
+  static Widget setSvgImg(
+    String imgName, {
+    Color? color,
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+  }) {
     return SvgPicture.asset(
       'assets/images/svg_images/$imgName.svg',
       fit: fit,
@@ -42,14 +49,6 @@ class CommonUi {
       color: color,
       fontSize: fontSize,
       fontFamily: fontFamily,
-    );
-  }
-
-  static Widget bottomSpace({
-    double height = 36,
-  }) {
-    return SizedBox(
-      height: height,
     );
   }
 
@@ -94,6 +93,13 @@ class CommonUi {
           ), // Progress indicator color
         ),
       ),
+    );
+  }
+
+  /// Method to build refresh material classic header.
+  static Widget refreshMaterialHeader() {
+    return const MaterialClassicHeader(
+      color: AppColors.black,
     );
   }
 }

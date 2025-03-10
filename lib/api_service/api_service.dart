@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:getx_demo/api_service/api_endpoint.dart';
 import 'package:getx_demo/api_service/response_model.dart';
 
+/// ApiService class
 class ApiService extends GetConnect {
   @override
   String? get baseUrl => ApiEndPoint.baseUrl;
 
+/// getRequest method
   Future<ResponseModel> getRequest({
     required String endPoint,
   }) async {
