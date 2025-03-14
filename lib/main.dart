@@ -14,11 +14,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.routeComments,
+      initialRoute: AppRoutes.expensionTile,
       getPages: AppPages.pages,
       defaultTransition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 300),
-      
+    
     );
   }
 }

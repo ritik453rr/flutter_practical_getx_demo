@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/common_ui.dart';
-import 'package:getx_demo/screens/age_selection/age_selection_controller.dart';
+import 'package:getx_demo/screens/number_picker/number_picker_controller.dart';
 import 'package:wheel_slider/wheel_slider.dart';
 
-class AgeSelectionView extends StatefulWidget {
-  const AgeSelectionView({super.key});
+class NumberPickerView extends StatefulWidget {
+  const NumberPickerView({super.key});
 
   @override
-  State<AgeSelectionView> createState() => _AgeSelectionViewState();
+  State<NumberPickerView> createState() => _NumberPickerViewState();
 }
 
-final AgeSelectionController onboardingController = Get.find();
+final NumberPickerController onboardingController = Get.find();
 
-class _AgeSelectionViewState extends State<AgeSelectionView> {
+class _NumberPickerViewState extends State<NumberPickerView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

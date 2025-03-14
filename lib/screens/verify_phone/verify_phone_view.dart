@@ -108,7 +108,7 @@ class VerifyPhoneView extends GetView<VerifyPhoneController> {
                     ),
                   ),
                   enableSuggestions: false,
-                 // errorText: "fffff",
+                  // errorText: "fffff",
                   preFilledWidget: Text(
                     '0',
                     style: CommonUi.customTextStyle(
@@ -164,12 +164,14 @@ class VerifyPhoneView extends GetView<VerifyPhoneController> {
                 child: Text(
                   "Finish",
                   style: CommonUi.customTextStyle(
-                      color: AppColors.colorWhite,
+                      color: AppColors.white,
                       fontSize: 13,
                       fontFamily: AppFonts.fontSemiBold),
                 ),
               ),
-              const SizedBox(height: 30,),
+              const SizedBox(
+                height: 30,
+              ),
             ],
           ),
         ),

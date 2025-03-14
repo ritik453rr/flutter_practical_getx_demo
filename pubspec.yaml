@@ -45,6 +45,8 @@ dependencies:
   shimmer: ^3.0.0
   widget_and_text_animator: ^1.1.5
   connectivity_plus: ^6.0.3
+  fluttertoast: ^8.2.5
+  calendar_date_picker2: ^1.1.9
 
 dev_dependencies:
   flutter_test:
