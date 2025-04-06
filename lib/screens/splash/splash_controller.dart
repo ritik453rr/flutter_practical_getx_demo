@@ -13,7 +13,7 @@ class SplashController extends GetxController {
   void navigation() {
     Future.delayed(const Duration(seconds: 2), () async {
       if (await Global.checkInternetConnection()) {
-        Get.toNamed(AppRoutes.routeTodos);
+        Get.toNamed(AppRoutes.todos);
       } else {
         print("No Internet....");
       }

@@ -5,6 +5,9 @@ import 'package:getx_demo/screens/number_picker/number_picker_binding.dart';
 import 'package:getx_demo/screens/number_picker/number_picker_view.dart';
 import 'package:getx_demo/screens/date_time/date_time_binding.dart';
 import 'package:getx_demo/screens/date_time/date_time_view.dart';
+import 'package:getx_demo/screens/pick_media/pick_media_binding.dart';
+import 'package:getx_demo/screens/pick_media/pick_media_controller.dart';
+import 'package:getx_demo/screens/pick_media/pick_media_view.dart';
 import 'package:getx_demo/screens/refresh_page/comments/comment_page_binding.dart';
 import 'package:getx_demo/screens/refresh_page/comments/comment_page_view.dart';
 import 'package:getx_demo/screens/refresh_page/todos/todos_binding.dart';
@@ -24,7 +27,7 @@ class AppPages {
       binding: NumberPickerBinding(),
     ),
     GetPage(
-      name: AppRoutes.routeVerifyPhone,
+      name: AppRoutes.verifyPhone,
       page: () => const VerifyPhoneView(),
       binding: VerifyPhonBinding(),
     ),
@@ -34,17 +37,17 @@ class AppPages {
       binding: DateTimeBinding(),
     ),
     GetPage(
-      name: AppRoutes.routeComments,
+      name: AppRoutes.comments,
       page: () => const CommentPageView(),
       binding: CommentPageBinding(),
     ),
     GetPage(
-      name: AppRoutes.routeSplash,
+      name: AppRoutes.splash,
       page: () => SplashView(),
       binding: SplashBinding(),
     ),
     GetPage(
-      name: AppRoutes.routeTodos,
+      name: AppRoutes.todos,
       page: () => const TodosView(),
       binding: TodosBinding(),
     ),
@@ -52,6 +55,11 @@ class AppPages {
       name: AppRoutes.expensionTile,
       page: () => const ExpensionTileView(),
       binding: ExpensionTileBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.pickMedia,
+      page: () => const PickMediaView(),
+      binding: PickMediaBinding(),
     ),
   ];
 }

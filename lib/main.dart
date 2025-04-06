@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/language/app_language.dart';
 import 'package:getx_demo/routing/app_pages.dart';
 import 'routing/app_routes.dart';
 
@@ -14,11 +15,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.expensionTile,
+      initialRoute: AppRoutes.pickMedia,
       getPages: AppPages.pages,
-      defaultTransition: Transition.rightToLeft,
+      defaultTransition: Transition.native,
+      translations: AppLanguge(),
+      locale: const Locale('en', 'US'),
       transitionDuration: const Duration(milliseconds: 300),
-    
     );
   }
 }

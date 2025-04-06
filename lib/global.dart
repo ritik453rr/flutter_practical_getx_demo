@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 class Global {
 
+  static const double horizontalPadding = 20.0;
+
 // Hide Keybord remove focus
   static hideKeyBoard(){
   FocusManager.instance.primaryFocus?.unfocus();
