@@ -5,18 +5,18 @@ import 'package:getx_demo/screens/number_picker/number_picker_binding.dart';
 import 'package:getx_demo/screens/number_picker/number_picker_view.dart';
 import 'package:getx_demo/screens/date_time/date_time_binding.dart';
 import 'package:getx_demo/screens/date_time/date_time_view.dart';
+import 'package:getx_demo/screens/pagination/horizontal_paging/horizontal_paging_binding.dart';
+import 'package:getx_demo/screens/pagination/horizontal_paging/horizontal_paging_view.dart';
 import 'package:getx_demo/screens/pick_media/pick_media_binding.dart';
-import 'package:getx_demo/screens/pick_media/pick_media_controller.dart';
 import 'package:getx_demo/screens/pick_media/pick_media_view.dart';
-import 'package:getx_demo/screens/refresh_page/comments/comment_page_binding.dart';
-import 'package:getx_demo/screens/refresh_page/comments/comment_page_view.dart';
-import 'package:getx_demo/screens/refresh_page/todos/todos_binding.dart';
-import 'package:getx_demo/screens/refresh_page/todos/todos_view.dart';
+import 'package:getx_demo/screens/pagination/comments/comment_page_binding.dart';
+import 'package:getx_demo/screens/pagination/comments/comment_page_view.dart';
+import 'package:getx_demo/screens/pagination/todos/todos_binding.dart';
+import 'package:getx_demo/screens/pagination/todos/todos_view.dart';
 import 'package:getx_demo/screens/splash/splash_binding.dart';
 import 'package:getx_demo/screens/verify_phone/verify_phone_binding.dart';
 import 'package:getx_demo/screens/verify_phone/verify_phone_view.dart';
 import 'package:getx_demo/routing/app_routes.dart';
-
 import '../screens/splash/splash_view.dart';
 
 class AppPages {
@@ -60,6 +60,11 @@ class AppPages {
       name: AppRoutes.pickMedia,
       page: () => const PickMediaView(),
       binding: PickMediaBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.horizontalPaging,
+      page: () => HorizontalPagingView(),
+      binding: HorizontalPagingBinding(),
     ),
   ];
 }

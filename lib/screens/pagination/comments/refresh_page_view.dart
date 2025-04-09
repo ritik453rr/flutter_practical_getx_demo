@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/common_ui.dart';
-import 'package:getx_demo/screens/refresh_page/comments/comment_page_controller.dart';
+import 'package:getx_demo/screens/pagination/comments/comment_page_controller.dart';
 import 'package:getx_demo/shimmers/item_shimmer.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:shimmer/shimmer.dart';
 
 class RefreshPageView extends GetView<CommentPageController> {
   const RefreshPageView({super.key});

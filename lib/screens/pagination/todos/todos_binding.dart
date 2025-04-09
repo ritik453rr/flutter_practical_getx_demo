@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:getx_demo/screens/refresh_page/todos/todos_controller.dart';
+import 'package:getx_demo/screens/pagination/todos/todos_controller.dart';
 
 class TodosBinding extends Bindings {
   @override

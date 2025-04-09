@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.pickMedia,
+      initialRoute: AppRoutes.comments,
       getPages: AppPages.pages,
       defaultTransition: Transition.native,
       translations: AppLanguge(),

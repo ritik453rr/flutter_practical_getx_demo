@@ -7,4 +7,5 @@ class AppRoutes {
   static const String todos = '/routeTodos';
   static const String expensionTile = '/expensionTile';
   static const String pickMedia='/pickMedia';
+  static const String horizontalPaging = '/horizontalPaging';
 }
