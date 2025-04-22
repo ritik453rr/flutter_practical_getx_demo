@@ -2,7 +2,6 @@ import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/app_fonts.dart';
 
@@ -132,7 +131,7 @@ class DateTimeWidgets {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(left: 20, bottom: 20),
           child: Text(
             "Cupertino Date Picker - Default",

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:getx_demo/global.dart';
+import 'package:getx_demo/common/app_constants.dart';
 import 'package:getx_demo/routing/app_routes.dart';
 
 class SplashController extends GetxController {
@@ -12,7 +12,7 @@ class SplashController extends GetxController {
 
   void navigation() {
     Future.delayed(const Duration(seconds: 2), () async {
-      if (await Global.checkInternetConnection()) {
+      if (await AppConstants.checkInternetConnection()) {
         Get.toNamed(AppRoutes.todos);
       } else {
         print("No Internet....");

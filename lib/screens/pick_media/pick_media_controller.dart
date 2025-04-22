@@ -15,8 +15,8 @@ class PickMediaController extends GetxController {
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
-            leading: Icon(Icons.flip_camera_ios_rounded),
-            title: Text("Take Picture"),
+            leading: const Icon(Icons.flip_camera_ios_rounded),
+            title: const Text("Take Picture"),
             onTap: () async {
               Get.back();
               if (await requestPermission(Permission.camera)) {
@@ -30,8 +30,8 @@ class PickMediaController extends GetxController {
             },
           ),
           ListTile(
-            leading: Icon(Icons.photo),
-            title: Text("Choose from gallery"),
+            leading: const Icon(Icons.photo),
+            title: const Text("Choose from gallery"),
             onTap: () async {
               Get.back();
               if (await requestPermission(Permission.photos)) {

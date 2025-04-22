@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
-import 'package:getx_demo/common/common_ui.dart';
-import 'package:getx_demo/common/img_res.dart';
-import 'package:getx_demo/pages/date_time/date_time_widgets.dart';
-import 'package:getx_demo/pages/expension_tile/expension_tile_controller.dart';
-import 'package:getx_demo/pages/expension_tile/expension_tile_widgets.dart';
+import 'package:getx_demo/common/app_images.dart';
+import 'package:getx_demo/screens/date_time/date_time_widgets.dart';
+import 'package:getx_demo/screens/expension_tile/expension_tile_controller.dart';
+import 'package:getx_demo/screens/expension_tile/expension_tile_widgets.dart';
 
 class ExpensionTileView extends GetView<ExpensionTileController> {
   const ExpensionTileView({super.key});
@@ -18,7 +16,7 @@ class ExpensionTileView extends GetView<ExpensionTileController> {
         child: Container(
           width: Get.width,
           height: Get.height,
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           margin: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: AppColors.white,

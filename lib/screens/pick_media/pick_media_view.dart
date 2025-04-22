@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/app_font_sizes.dart';
 import 'package:getx_demo/common/common_ui.dart';
-import 'package:getx_demo/global.dart';
-import 'package:getx_demo/pages/pick_media/pick_media_controller.dart';
+import 'package:getx_demo/common/app_constants.dart';
+import 'package:getx_demo/screens/pick_media/pick_media_controller.dart';
 
 class PickMediaView extends GetView<PickMediaController> {
   const PickMediaView({super.key});
@@ -30,7 +30,7 @@ class PickMediaView extends GetView<PickMediaController> {
           width: Get.width,
           height: Get.height,
           padding: const EdgeInsets.symmetric(
-            horizontal: Global.horizontalPadding,
+            horizontal: AppConstants.horizontalPadding,
             vertical: 20,
           ),
           child: Column(

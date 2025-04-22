@@ -19,4 +19,7 @@ class AppColors {
   /// Default Colors
   static const Color blue = Colors.blue;
   static const Color transparent = Colors.transparent;
-}
+
+  static Color shimmerBaseColor = Colors.grey.shade300;
+  static Color shimmerHighlightColor = Colors.grey.shade100;
+} 

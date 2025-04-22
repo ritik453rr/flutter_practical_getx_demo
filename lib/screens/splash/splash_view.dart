@@ -4,7 +4,7 @@ import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/app_font_sizes.dart';
 import 'package:getx_demo/common/app_fonts.dart';
 import 'package:getx_demo/common/common_ui.dart';
-import 'package:getx_demo/pages/splash/splash_controller.dart';
+import 'package:getx_demo/screens/splash/splash_controller.dart';
 import 'package:widget_and_text_animator/widget_and_text_animator.dart';
 
 class SplashView extends StatelessWidget {

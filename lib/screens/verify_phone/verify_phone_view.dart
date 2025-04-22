@@ -7,9 +7,8 @@ import 'package:getx_demo/common/app_font_sizes.dart';
 import 'package:getx_demo/common/app_fonts.dart';
 import 'package:getx_demo/common/common_ui.dart';
 import 'package:getx_demo/common/custom_button.dart';
-import 'package:getx_demo/common/img_res.dart';
-import 'package:getx_demo/global.dart';
-import 'package:getx_demo/pages/verify_phone/verify_phone_controller.dart';
+import 'package:getx_demo/common/app_images.dart';
+import 'package:getx_demo/screens/verify_phone/verify_phone_controller.dart';
 import 'package:pinput/pinput.dart';
 
 class VerifyPhoneView extends GetView<VerifyPhoneController> {

@@ -1,8 +1,6 @@
-import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
-import "package:get/get.dart";
 import "package:getx_demo/common/app_colors.dart";
-import 'package:getx_demo/pages/date_time/date_time_widgets.dart';
+import 'package:getx_demo/screens/date_time/date_time_widgets.dart';
 
 class DateTimeView extends StatelessWidget {
   const DateTimeView({super.key});
