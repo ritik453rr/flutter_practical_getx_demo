@@ -9,4 +9,6 @@ class AppRoutes {
   static const String expensionTile = '/expensionTile';
   static const String pickMedia = '/pickMedia';
   static const String horizontalPaging = '/horizontalPaging';
+  static const String futureBuilder = '/futureBuilder';
+  static const String streamBuilder = '/streamBuilder';
 }

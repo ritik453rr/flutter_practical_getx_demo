@@ -1,12 +1,16 @@
 import 'package:get/get.dart';
 import 'package:getx_demo/screens/expension_tile/expension_tile_binding.dart';
 import 'package:getx_demo/screens/expension_tile/expension_tile_view.dart';
+import 'package:getx_demo/screens/future_builder/future_builder_binding.dart';
+import 'package:getx_demo/screens/future_builder/future_builder_view.dart';
 import 'package:getx_demo/screens/number_picker/number_picker_binding.dart';
 import 'package:getx_demo/screens/number_picker/number_picker_view.dart';
 import 'package:getx_demo/screens/date_time/date_time_binding.dart';
 import 'package:getx_demo/screens/date_time/date_time_view.dart';
 import 'package:getx_demo/screens/pick_media/pick_media_binding.dart';
 import 'package:getx_demo/screens/pick_media/pick_media_view.dart';
+import 'package:getx_demo/screens/stream_builder/stream_builder_binding.dart';
+import 'package:getx_demo/screens/stream_builder/stream_builder_view.dart';
 import 'package:getx_demo/screens/todos/todos_binding.dart';
 import 'package:getx_demo/screens/todos/todos_view.dart';
 import 'package:getx_demo/screens/splash/splash_binding.dart';
@@ -53,6 +57,16 @@ class AppPages {
       name: AppRoutes.pickMedia,
       page: () => const PickMediaView(),
       binding: PickMediaBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.futureBuilder,
+      page: () => const FutureBuilderView(),
+      binding: FutureBuilderBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.streamBuilder,
+      page: () => StreamBuilderView(),
+      binding: StreamBuilderBinding(),
     ),
   ];
 }

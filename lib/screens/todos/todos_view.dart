@@ -15,7 +15,7 @@ class TodosView extends GetView<TodosController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: AppStrings.language.tr),
+      appBar: const CustomAppBar(title: "Todos"),
       body: Obx(() {
         if (controller.isLoading.value) {
           return AppShimmers.todoItemShimmer();
