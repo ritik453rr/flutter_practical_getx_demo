@@ -1,23 +1,25 @@
 import 'package:get/get.dart';
-import 'package:getx_demo/screens/expension_tile/expension_tile_binding.dart';
-import 'package:getx_demo/screens/expension_tile/expension_tile_view.dart';
-import 'package:getx_demo/screens/future_builder/future_builder_binding.dart';
-import 'package:getx_demo/screens/future_builder/future_builder_view.dart';
-import 'package:getx_demo/screens/number_picker/number_picker_binding.dart';
-import 'package:getx_demo/screens/number_picker/number_picker_view.dart';
-import 'package:getx_demo/screens/date_time/date_time_binding.dart';
-import 'package:getx_demo/screens/date_time/date_time_view.dart';
-import 'package:getx_demo/screens/pick_media/pick_media_binding.dart';
-import 'package:getx_demo/screens/pick_media/pick_media_view.dart';
-import 'package:getx_demo/screens/stream_builder/stream_builder_binding.dart';
-import 'package:getx_demo/screens/stream_builder/stream_builder_view.dart';
-import 'package:getx_demo/screens/todos/todos_binding.dart';
-import 'package:getx_demo/screens/todos/todos_view.dart';
-import 'package:getx_demo/screens/splash/splash_binding.dart';
-import 'package:getx_demo/screens/verify_phone/verify_phone_binding.dart';
-import 'package:getx_demo/screens/verify_phone/verify_phone_view.dart';
+import 'package:getx_demo/pages/api_pages/home/home_binding.dart';
+import 'package:getx_demo/pages/api_pages/home/home_view.dart';
+import 'package:getx_demo/pages/api_pages/login/login_binding.dart';
+import 'package:getx_demo/pages/api_pages/login/login_view.dart';
+import 'package:getx_demo/pages/expension_tile/expension_tile_binding.dart';
+import 'package:getx_demo/pages/expension_tile/expension_tile_view.dart';
+import 'package:getx_demo/pages/future_builder/future_builder_binding.dart';
+import 'package:getx_demo/pages/future_builder/future_builder_view.dart';
+import 'package:getx_demo/pages/number_picker/number_picker_binding.dart';
+import 'package:getx_demo/pages/number_picker/number_picker_view.dart';
+import 'package:getx_demo/pages/date_time/date_time_binding.dart';
+import 'package:getx_demo/pages/date_time/date_time_view.dart';
+import 'package:getx_demo/pages/pick_media/pick_media_binding.dart';
+import 'package:getx_demo/pages/pick_media/pick_media_view.dart';
+import 'package:getx_demo/pages/stream_builder/stream_builder_binding.dart';
+import 'package:getx_demo/pages/stream_builder/stream_builder_view.dart';
+import 'package:getx_demo/pages/splash/splash_binding.dart';
+import 'package:getx_demo/pages/verify_phone/verify_phone_binding.dart';
+import 'package:getx_demo/pages/verify_phone/verify_phone_view.dart';
 import 'package:getx_demo/routing/app_routes.dart';
-import '../screens/splash/splash_view.dart';
+import '../pages/splash/splash_view.dart';
 
 // Defines the application's page routes and their corresponding bindings using GetX
 class AppPages {
@@ -44,11 +46,6 @@ class AppPages {
       binding: SplashBinding(),
     ),
     GetPage(
-      name: AppRoutes.todos,
-      page: () => const TodosView(),
-      binding: TodosBinding(),
-    ),
-    GetPage(
       name: AppRoutes.expensionTile,
       page: () => const ExpensionTileView(),
       binding: ExpensionTileBinding(),
@@ -67,6 +64,17 @@ class AppPages {
       name: AppRoutes.streamBuilder,
       page: () => StreamBuilderView(),
       binding: StreamBuilderBinding(),
+    ),
+    
+    GetPage(
+      name: AppRoutes.home,
+      page: () => const HomeView(),
+      binding: HomeBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.login,
+      page: () => const LoginView(),
+      binding: LoginBinding(),
     ),
   ];
 }

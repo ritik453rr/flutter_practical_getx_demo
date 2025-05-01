@@ -24,4 +24,29 @@ class AppShimmers {
       },
     );
   }
+
+  static Widget newsShimmer(){
+  return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: ListView.builder(
+        itemCount: 15, // Show 10 shimmer items
+        padding: const EdgeInsets.all(16),
+        itemBuilder: (context, index) {
+          return Container(
+            // height: 100,
+             // width: Get.width,
+            margin: const EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.symmetric(vertical: 28),
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(8),
+            ),
+          
+          );
+        },
+      ),
+    );
+  
+ }
 }
