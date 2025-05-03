@@ -4,17 +4,17 @@ import 'package:getx_demo/api_service/api_endpoint.dart';
 import 'package:getx_demo/api_service/api_service.dart';
 import 'package:getx_demo/api_service/response_model.dart';
 import 'package:getx_demo/common/app_constants.dart';
+import 'package:getx_demo/common/common_ui.dart';
 import 'package:getx_demo/routing/app_routes.dart';
 
+/// LoginController class to handle login logicc
 class LoginController extends GetxController {
-  // Form key for validation
-
-  // controllers and
+  // controllers and instances 
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late ApiService apiService;
 
-  // Observable variables
+  // variables
   final isLoading = false.obs;
   final isPasswordVisible = false.obs;
 
@@ -40,12 +40,12 @@ class LoginController extends GetxController {
 
   // Handle login
   void login() async {
-    if(isLoading.value) return;
+    if (isLoading.value) return;
     AppConstants.hideKeyBoard();
     try {
       isLoading.value = true;
       ResponseModel respModel = await apiService.postRequest(
-        baseUrl: ApiEndPoint.loginBaseUrl,
+        url: ApiEndPoint.loginUrl,
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
@@ -60,21 +60,14 @@ class LoginController extends GetxController {
         Get.offAllNamed(AppRoutes.home);
       } else {
         debugPrint(respModel.message);
-        Get.snackbar(
-          'Login Failed',
-          'Invalid email or password',
-          snackPosition: SnackPosition.BOTTOM,
-        );
+        CommonUi.commonSnackBar(
+            title: "Login Failed", message: 'Invalid email or password');
       }
     } catch (e) {
       debugPrint("Error: $e");
-      Get.snackbar(
-        'Error',
-        'Login failed. Please try again.',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-      );
+      CommonUi.commonSnackBar(
+          title: "Login failed",
+          message: 'Please try again.');
     } finally {
       isLoading.value = false;
     }

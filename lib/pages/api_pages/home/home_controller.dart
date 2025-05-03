@@ -58,7 +58,7 @@ class HomeController extends GetxController {
       };
 
       final ResponseModel resModel = await apiServiece.getRequest(
-        baseUrl: ApiEndPoint.newsBaseUrl,
+        url: ApiEndPoint.newsBaseUrl,
         query: query,
         headers: {
           "Content-Type": "application/json",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/app_font_sizes.dart';
 import 'package:getx_demo/common/app_fonts.dart';
@@ -50,10 +51,8 @@ class CommonUi {
       fontFamily: fontFamily,
       color: color,
       fontSize: fontSize,
-      
     );
   }
-
 
   /// method to show toast message.
   static Future appToast({required String toastMsg}) {
@@ -63,6 +62,16 @@ class CommonUi {
       toastLength: Toast.LENGTH_SHORT,
       textColor: AppColors.white,
       fontSize: AppFontSizes.font16,
+    );
+  }
+
+  /// method to show snackbar
+  static SnackbarController commonSnackBar(
+      {required String title, required String message}) {
+    return Get.snackbar(
+      title,
+      message,
+      snackPosition: SnackPosition.BOTTOM,
     );
   }
 }
