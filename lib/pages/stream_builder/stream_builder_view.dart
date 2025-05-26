@@ -7,7 +7,7 @@ import 'package:getx_demo/common/custom_textfield.dart';
 import 'package:getx_demo/pages/stream_builder/stream_builder_controller.dart';
 
 class StreamBuilderView extends GetView<StreamBuilderController> {
-  StreamBuilderView({super.key});
+  const StreamBuilderView({super.key});
   
 
   @override

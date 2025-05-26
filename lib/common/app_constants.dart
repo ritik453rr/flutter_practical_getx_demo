@@ -2,6 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 // Utility class containing global constants and helper methods
 class AppConstants {
@@ -29,6 +30,10 @@ class AppConstants {
     }
   }
 
+  
+
+ 
+
 // Change language
   static void changeLanguage({required int index}) {
     switch (index) {
@@ -38,5 +43,30 @@ class AppConstants {
       case 1:
         Get.updateLocale(Locale('hi', 'IN'));
     }
+  }
+
+/// Displays a dialog when permission is denied, allowing the user to open app settings
+  static void showPermissionDeniedDialog({required String title, required String message}) {
+    Get.dialog(
+      AlertDialog(
+        title: Text(title),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: const Text("OK"),
+          ),
+          TextButton(
+            onPressed: () {
+              Get.back();
+              openAppSettings();
+            },
+            child: const Text("Open Settings"),
+          ),
+        ],
+      ),
+    );
   }
 }

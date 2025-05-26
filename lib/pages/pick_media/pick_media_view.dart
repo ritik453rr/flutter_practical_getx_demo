@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
@@ -25,39 +25,29 @@ class PickMediaView extends GetView<PickMediaController> {
         ),
         centerTitle: true,
       ),
-      body: Obx(
-        () => Container(
-          width: Get.width,
-          height: Get.height,
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppConstants.horizontalPadding,
-            vertical: 20,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              controller.imagePaths.value.isNotEmpty
-                  ? Image.file(
-                      File(controller.imagePaths.value),
-                      height: Get.height * 0.7,
-                      width: Get.width,
-                      fit: BoxFit.cover,
-                    )
-                  : const SizedBox(),
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
-                ),
-                onPressed: () {
-                  controller.pickImage();
-                },
-                child: const Text("Pick Image"),
-              ),
-            ],
-          ),
-        ),
-      ),
+      body: Obx(() => SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                controller.imagePaths.value.isNotEmpty
+                    ? Image.file(
+                        File(controller.imagePaths.value),
+                        height: Get.height * 0.7,
+                        width: Get.width,
+                        fit: BoxFit.cover,
+                      )
+                    : const SizedBox(),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      controller.pickImage();
+                    },
+                    child: const Text("Pick Image"),
+                  ),
+                )
+              ],
+            ),
+          )),
     );
   }
 }

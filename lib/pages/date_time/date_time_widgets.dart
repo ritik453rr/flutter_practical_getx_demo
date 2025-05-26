@@ -33,7 +33,7 @@ class DateTimeWidgets {
             controlsTextStyle: const TextStyle(
                 color: AppColors.black,
                 fontSize: 14,
-                fontFamily: AppFonts.fontSemiBold),
+                fontFamily: AppFonts.semiBold),
             customModePickerIcon: const Icon(
               Icons.arrow_forward_ios,
               size: 16,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/language/app_language.dart';
 import 'package:getx_demo/routing/app_pages.dart';
 import 'routing/app_routes.dart';
@@ -18,7 +19,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.login,
+      initialRoute: AppRoutes.pickMedia,
+      theme: ThemeData(
+        scaffoldBackgroundColor: AppColors.white,
+      ),
       getPages: AppPages.pages,
       defaultTransition: Transition.native,
       translations: AppLanguge(),

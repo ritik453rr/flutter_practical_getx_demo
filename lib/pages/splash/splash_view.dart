@@ -21,7 +21,7 @@ class SplashView extends StatelessWidget {
           style: CommonUi.customTextStyle(
             fontSize: AppFontSizes.font50,
             color: AppColors.black,
-            fontFamily: AppFonts.fontSemiBold,
+            fontFamily: AppFonts.semiBold,
           ),
           incomingEffect: WidgetTransitionEffects(
             duration: const Duration(milliseconds: 500),

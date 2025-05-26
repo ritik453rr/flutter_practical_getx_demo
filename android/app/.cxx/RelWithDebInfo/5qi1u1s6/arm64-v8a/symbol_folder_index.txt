@@ -1,0 +1,1 @@
+C:\Users\dell\Desktop\ptcl_flutter\getx_demo\build\app\intermediates\cxx\RelWithDebInfo\5qi1u1s6\obj\arm64-v8a

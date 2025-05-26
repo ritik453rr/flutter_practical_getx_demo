@@ -62,7 +62,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.streamBuilder,
-      page: () => StreamBuilderView(),
+      page: () => const StreamBuilderView(),
       binding: StreamBuilderBinding(),
     ),
     
@@ -75,6 +75,6 @@ class AppPages {
       name: AppRoutes.login,
       page: () => const LoginView(),
       binding: LoginBinding(),
-    ),
+    )
   ];
 }

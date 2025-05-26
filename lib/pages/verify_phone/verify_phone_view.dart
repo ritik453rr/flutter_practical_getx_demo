@@ -160,13 +160,7 @@ class VerifyPhoneView extends GetView<VerifyPhoneController> {
                 backgroundColor: AppColors.colorPeach,
                 width: double.infinity,
                 onPressed: () {},
-                child: Text(
-                  "Finish",
-                  style: CommonUi.customTextStyle(
-                      color: AppColors.white,
-                      fontSize: 13,
-                      fontFamily: AppFonts.fontSemiBold),
-                ),
+                title: "Finish",
               ),
               const SizedBox(
                 height: 30,

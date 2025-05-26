@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:getx_demo/common/app_colors.dart';
+import 'package:getx_demo/common/app_fonts.dart';
+import 'package:getx_demo/common/common_ui.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({
-    super.key,
-    required this.onPressed,
-    required this.child,
-    this.height,
-    this.backgroundColor,
-    this.width,
-    this.vericalPadding=15,
-    this.horizontalPadding=15,
-  });
   final void Function()? onPressed;
-  final Widget? child;
+  final String title;
   final double? height;
   final Color? backgroundColor;
   final double? width;
   final double vericalPadding;
   final double horizontalPadding;
+  const CustomButton({
+    super.key,
+    required this.onPressed,
+    required this.title,
+    this.height,
+    this.backgroundColor,
+    this.width,
+    this.vericalPadding = 15,
+    this.horizontalPadding = 15,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +30,23 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor,
-          padding:  EdgeInsets.symmetric(
-            vertical:vericalPadding,
+          backgroundColor: AppColors.blue,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          padding: EdgeInsets.symmetric(
+            vertical: vericalPadding,
             horizontal: horizontalPadding,
           ),
         ),
-        child: child,
+        child: Text(
+          title,
+          style: CommonUi.customTextStyle(
+            color: AppColors.white,
+            fontSize: 16,
+            fontFamily: AppFonts.semiBold,
+          ),
+        ),
       ),
     );
   }
