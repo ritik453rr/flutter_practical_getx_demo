@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_constants.dart';
 import 'package:getx_demo/common/custom_textfield.dart';
@@ -42,12 +43,21 @@ class LoginView extends GetView<LoginController> {
                   ),
                   const SizedBox(height: 48),
                   // Email Field
-                  CustomTextfield(
-                    controller: controller.emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    labelText: 'Email',
-                    prefixIcon: Icons.email_outlined,
-                  ),
+                  Obx(() => CustomTextfield(
+                        controller: controller.emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        labelText: 'Email',
+                        onChanged: (val) {
+                          if (val.isNotEmpty) {
+                            controller.emailError.value = null;
+                          }
+                        },
+                        inputFormatters: [
+                          FilteringTextInputFormatter.deny(RegExp(r'\s')),
+                        ],
+                        errorText: controller.emailError.value,
+                        prefixIcon: Icons.email_outlined,
+                      )),
                   const SizedBox(height: 24),
                   // Password Field
                   Obx(
@@ -55,6 +65,7 @@ class LoginView extends GetView<LoginController> {
                       controller: controller.passwordController,
                       obscureText: !controller.isPasswordVisible.value,
                       labelText: 'Password',
+                      errorText: controller.passwordError.value,
                       prefixIcon: Icons.lock_outline,
                       suffixIcon: controller.isPasswordVisible.value
                           ? Icons.visibility_off

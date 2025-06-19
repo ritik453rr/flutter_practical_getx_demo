@@ -18,11 +18,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      getPages: AppPages.pages,
       initialRoute: AppRoutes.splash,
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.white,
       ),
-      getPages: AppPages.pages,
       defaultTransition: Transition.native,
       translations: AppLanguge(),
       locale: const Locale('en', 'US'),

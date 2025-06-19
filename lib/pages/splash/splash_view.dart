@@ -19,7 +19,7 @@ class SplashView extends StatelessWidget {
         child: WidgetAnimator(
           incomingEffect: WidgetTransitionEffects.incomingScaleUp(
             duration: const Duration(milliseconds: 1200),
-            curve: Curves.easeOutBack,
+            curve: Curves.easeInOut,
           ),
           child: Text(
             "Splash",

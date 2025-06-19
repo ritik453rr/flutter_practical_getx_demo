@@ -9,7 +9,7 @@ import 'package:getx_demo/routing/app_routes.dart';
 
 /// LoginController class to handle login logicc
 class LoginController extends GetxController {
-  // controllers and instances 
+  // controllers and instances
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late ApiService apiService;
@@ -17,6 +17,8 @@ class LoginController extends GetxController {
   // variables
   final isLoading = false.obs;
   final isPasswordVisible = false.obs;
+  final emailError = RxnString();
+  final passwordError = RxnString();
 
   @override
   void onInit() {
@@ -30,6 +32,7 @@ class LoginController extends GetxController {
   void onClose() {
     emailController.dispose();
     passwordController.dispose();
+    apiService.dispose();
     super.onClose();
   }
 
@@ -38,10 +41,36 @@ class LoginController extends GetxController {
     isPasswordVisible.value = !isPasswordVisible.value;
   }
 
+  /// validate email
+  bool validateEmail() {
+    final email = emailController.text;
+    if (email.isEmpty) {
+      emailError.value = "Enter email";
+      return false;
+    }
+    if (!GetUtils.isEmail(email)) {
+      emailError.value = "Enter a valid email";
+      return false;
+    }
+    emailError.value = null;
+    return true;
+  }
+
+  /// validate password
+  bool validatePassword() {
+    final password = passwordController.text;
+    if (password.isEmpty) {
+      passwordError.value = "Enter password";
+      return false;
+    }
+    passwordError.value = null;
+    return true;
+  }
+
   // Handle login
   void login() async {
-    if (isLoading.value) return;
     AppConstants.hideKeyBoard();
+    if (!validateEmail() || !validatePassword() || isLoading.value) return;
     try {
       isLoading.value = true;
       ResponseModel respModel = await apiService.postRequest(
@@ -66,8 +95,7 @@ class LoginController extends GetxController {
     } catch (e) {
       debugPrint("Error: $e");
       CommonUi.commonSnackBar(
-          title: "Login failed",
-          message: 'Please try again.');
+          title: "Login failed", message: 'Please try again.');
     } finally {
       isLoading.value = false;
     }

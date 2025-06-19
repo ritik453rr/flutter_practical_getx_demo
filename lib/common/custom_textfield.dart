@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getx_demo/common/app_colors.dart';
+import 'package:flutter/services.dart';
 
 // Custom Textfield widget
 class CustomTextfield extends StatelessWidget {
@@ -12,6 +12,9 @@ class CustomTextfield extends StatelessWidget {
   final String? labelText;
   final IconData? prefixIcon;
   final bool obscureText;
+  final String? errorText;
+  final List<TextInputFormatter>? inputFormatters;
+  final void Function(String)? onChanged;
   const CustomTextfield({
     super.key,
     this.controller,
@@ -23,6 +26,9 @@ class CustomTextfield extends StatelessWidget {
     this.labelText,
     this.prefixIcon,
     this.obscureText=false,
+    this.errorText,
+    this.inputFormatters,
+    this.onChanged,
   });
 
   @override
@@ -31,9 +37,13 @@ class CustomTextfield extends StatelessWidget {
       controller: controller,
       keyboardType: keyboardType,
       obscureText:obscureText,
+      inputFormatters:inputFormatters ,
+      onChanged: onChanged,
       decoration: InputDecoration(
         fillColor: fillColor,
         labelText: labelText,
+        errorText:errorText ,
+      
         prefixIcon: Icon(prefixIcon),
         filled: filled,
         suffixIcon: IconButton(
@@ -42,8 +52,12 @@ class CustomTextfield extends StatelessWidget {
         ),
         enabledBorder: border(),
         focusedBorder: border(color: Colors.blue),
-        errorBorder: border(),
-        focusedErrorBorder: border(),
+        errorBorder: border(
+          color: Colors.red
+        ),
+        focusedErrorBorder: border(
+          color: Colors.red,
+        ),
       ),
     );
   }

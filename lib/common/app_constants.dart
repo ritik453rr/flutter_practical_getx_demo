@@ -18,6 +18,7 @@ class AppConstants {
     return HapticFeedback.lightImpact();
   }
 
+
   /// Checks if the device has an active internet connection
   static Future<bool> checkInternetConnection() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
