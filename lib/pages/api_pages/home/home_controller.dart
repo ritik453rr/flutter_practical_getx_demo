@@ -4,14 +4,12 @@ import 'package:getx_demo/api_service/api_endpoint.dart';
 import 'package:getx_demo/api_service/api_service.dart';
 import 'package:getx_demo/api_service/response_model.dart';
 import 'package:getx_demo/models/news_model.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 /// HomeController manages the state and business logic for the home page
 class HomeController extends GetxController {
   /// Controllers and Instances
   late ApiService apiServiece;
   late ScrollController scrollController;
-  late RefreshController refreshController;
 
   // Variables
   var page = 1;
@@ -30,10 +28,16 @@ class HomeController extends GetxController {
     fetchNews(isInit: true);
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    scrollController.dispose();
+    apiServiece.dispose();
+  }
+
   void initControllersAndInstances() {
     apiServiece = ApiService();
     scrollController = ScrollController();
-    refreshController = RefreshController();
   }
 
   /// Add scroll listener to the scroll controller
@@ -50,38 +54,33 @@ class HomeController extends GetxController {
   /// Fetch newspapers data from the API
   Future<void> fetchNews({bool isInit = false}) async {
     page = isInit ? 1 : page + 1;
-    try {
-      var query = {
-        'terms': 'oakland',
-        'format': 'json',
-        'page': "$page",
-      };
+    var query = {
+      'terms': 'oakland',
+      'format': 'json',
+      'page': "$page",
+    };
 
-      final ResponseModel resModel = await apiServiece.getRequest(
-        url: ApiEndPoint.newsBaseUrl,
-        query: query,
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-      );
+    final ResponseModel resModel = await apiServiece.getRequest(
+      url: ApiEndPoint.newsBaseUrl,
+      query: query,
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+    );
 
-      if (resModel.status) {
-        NewsModel newsModel = NewsModel.fromJson(resModel.data);
-        if (isInit) {
-          newsList.value = newsModel.items;
-        } else {
-          newsList.addAll(newsModel.items);
-        }
-        hasMore = newsModel.totalItems > newsList.length;
+    if (resModel.status) {
+      NewsModel newsModel = NewsModel.fromJson(resModel.data);
+      if (isInit) {
+        newsList.value = newsModel.items;
       } else {
-        Get.snackbar('Error', resModel.message);
+        newsList.addAll(newsModel.items);
       }
-    } catch (e) {
-      debugPrint("Error: $e");
-      Get.snackbar('Error', 'Something went wrong');
-    } finally {
+      hasMore = newsModel.totalItems > newsList.length;
       isLoading.value = false;
+    } else {
+      isLoading.value = false;
+      Get.snackbar('Error', resModel.message);
     }
   }
 
@@ -90,14 +89,10 @@ class HomeController extends GetxController {
     if (fetchingMore.value) {
       return;
     }
-    try {
-      fetchingMore.value = true;
-      await fetchNews();
-    } catch (e) {
-      debugPrint("Error: $e");
-      Get.snackbar('Error', 'Something went wrong');
-    } finally {
-      fetchingMore.value = false;
-    }
+    fetchingMore.value = true;
+    await Future.delayed(const Duration(seconds: 5));
+
+    await fetchNews();
+    fetchingMore.value = false;
   }
 }
