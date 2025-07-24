@@ -11,6 +11,7 @@ class AppRoutes {
   static const String horizontalPaging = '/horizontalPaging';
   static const String futureBuilder = '/futureBuilder';
   static const String streamBuilder = '/streamBuilder';
-   static const String home = '/home';
+  static const String home = '/home';
   static const String login = '/login';
+  static const String onboarding = '/onboarding';
 }

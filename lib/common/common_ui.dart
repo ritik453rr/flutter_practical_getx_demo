@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/app_font_sizes.dart';
 import 'package:getx_demo/common/app_fonts.dart';
+import 'package:getx_demo/language/app_strings.dart';
 
 class CommonUi {
   /// Set PNG image
@@ -47,11 +48,7 @@ class CommonUi {
     double fontSize = 14,
     String fontFamily = AppFonts.regular,
   }) {
-    return TextStyle(
-      fontFamily: fontFamily,
-      color: color,
-      fontSize: fontSize,
-    );
+    return TextStyle(fontFamily: fontFamily, color: color, fontSize: fontSize);
   }
 
   /// method to show toast message.
@@ -65,13 +62,54 @@ class CommonUi {
     );
   }
 
-  /// method to show snackbar
-  static SnackbarController commonSnackBar(
-      {required String title, required String message}) {
-    return Get.snackbar(
-      title,
-      message,
-      snackPosition: SnackPosition.BOTTOM,
+  /// A method to show an adaptive dialog with a title and content.
+  static Future adaptiveDialog({String? title, required String content}) {
+    return showAdaptiveDialog(
+      context: Get.context!,
+      builder: (context) {
+        return AlertDialog.adaptive(
+          title: Text(
+            title ?? "Error",
+            style: customTextStyle(fontSize: 24, color: AppColors.black),
+          ),
+          content: Text(
+            content,
+            style: customTextStyle(
+              fontSize: AppFontSizes.font14,
+              color: AppColors.black,
+              fontFamily: AppFonts.fontMedium,
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text(
+                AppStrings.ok.tr,
+                style: customTextStyle(
+                  color: AppColors.colorTealGreen,
+                  fontFamily: AppFonts.bold,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
+  }
+
+/// 
+  static roundBoxDecoration({Color color =AppColors.white,double borderRadius=20}) {
+    return BoxDecoration(
+        color:color, borderRadius: BorderRadius.circular(borderRadius));
+  }
+
+  /// method to show snackbar
+  static SnackbarController commonSnackBar({
+    required String title,
+    required String message,
+  }) {
+    return Get.snackbar(title, message, snackPosition: SnackPosition.BOTTOM);
   }
 }

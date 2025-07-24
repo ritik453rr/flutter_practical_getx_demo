@@ -11,6 +11,8 @@ import 'package:getx_demo/pages/number_picker/number_picker_binding.dart';
 import 'package:getx_demo/pages/number_picker/number_picker_view.dart';
 import 'package:getx_demo/pages/date_time/date_time_binding.dart';
 import 'package:getx_demo/pages/date_time/date_time_view.dart';
+import 'package:getx_demo/pages/onboarding/onboarding_main/onboarding_binding.dart';
+import 'package:getx_demo/pages/onboarding/onboarding_main/onboarding_view.dart';
 import 'package:getx_demo/pages/pick_media/pick_media_binding.dart';
 import 'package:getx_demo/pages/pick_media/pick_media_view.dart';
 import 'package:getx_demo/pages/stream_builder/stream_builder_binding.dart';
@@ -75,6 +77,11 @@ class AppPages {
       name: AppRoutes.login,
       page: () => const LoginView(),
       binding: LoginBinding(),
-    )
+    ),
+    GetPage(
+      name: AppRoutes.onboarding,
+      page: () =>OnboardingView(),
+      binding: OnboardingBinding(),
+    ),
   ];
 }

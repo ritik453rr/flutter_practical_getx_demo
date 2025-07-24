@@ -9,6 +9,7 @@ class AppLanguge extends Translations {
         // English Language
         'en_US': {
           AppStrings.language: 'Language',
+          AppStrings.ok: 'OK',
         },
         //Hindi Language
         'hi_IN': {

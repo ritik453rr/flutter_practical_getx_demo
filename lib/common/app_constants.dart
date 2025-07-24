@@ -7,6 +7,7 @@ import 'package:permission_handler/permission_handler.dart';
 // Utility class containing global constants and helper methods
 class AppConstants {
   static const double horizontalPadding = 20.0;
+  static const double bottomSpace = 20;
 
 // Hides the keyboard by removing focus from the current input field
   static hideKeyBoard() {
@@ -17,7 +18,6 @@ class AppConstants {
   static hapticFeedBack() {
     return HapticFeedback.lightImpact();
   }
-
 
   /// Checks if the device has an active internet connection
   static Future<bool> checkInternetConnection() async {
@@ -31,10 +31,6 @@ class AppConstants {
     }
   }
 
-  
-
- 
-
 // Change language
   static void changeLanguage({required int index}) {
     switch (index) {
@@ -46,8 +42,9 @@ class AppConstants {
     }
   }
 
-/// Displays a dialog when permission is denied, allowing the user to open app settings
-  static void showPermissionDeniedDialog({required String title, required String message}) {
+  /// Displays a dialog when permission is denied, allowing the user to open app settings
+  static void showPermissionDeniedDialog(
+      {required String title, required String message}) {
     Get.dialog(
       AlertDialog(
         title: Text(title),
