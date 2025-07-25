@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: AppPages.pages,
-      initialRoute: AppRoutes.onboarding,
+      initialRoute: AppRoutes.dashboard,
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.white,
       ),
