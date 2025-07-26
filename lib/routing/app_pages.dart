@@ -3,9 +3,8 @@ import 'package:getx_demo/pages/api_pages/home/home_binding.dart';
 import 'package:getx_demo/pages/api_pages/home/home_view.dart';
 import 'package:getx_demo/pages/api_pages/login/login_binding.dart';
 import 'package:getx_demo/pages/api_pages/login/login_view.dart';
-import 'package:getx_demo/pages/dashboard/dashboard_binding.dart';
-import 'package:getx_demo/pages/dashboard/dashboard_view.dart';
-import 'package:getx_demo/pages/dashboard/home/label_home_binding.dart';
+import 'package:getx_demo/pages/label_iq/dashboard/dashboard_binding.dart';
+import 'package:getx_demo/pages/label_iq/dashboard/dashboard_view.dart';
 import 'package:getx_demo/pages/expension_tile/expension_tile_binding.dart';
 import 'package:getx_demo/pages/expension_tile/expension_tile_view.dart';
 import 'package:getx_demo/pages/future_builder/future_builder_binding.dart';
@@ -86,8 +85,7 @@ class AppPages {
       page: () =>OnboardingView(),
       binding: OnboardingBinding(),
     ),
-    GetPage(name: AppRoutes.dashboard, page:()=>DashboardView(),bindings: [DashboardBinding(),
-    LabelHomeBinding(),
+    GetPage(name: AppRoutes.dashboard, page:()=>DashboardView(),bindings: [DashboardBinding()
     
     
     ]),
