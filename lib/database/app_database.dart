@@ -1,13 +1,13 @@
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
-import 'package:getx_demo/database/tables/todo_item.dart';
+import 'package:getx_demo/database/tables/pref_entity.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'dart:io';
 
 part 'app_database.g.dart'; // This file will be generated
 
-@DriftDatabase(tables: [TodoItem]) // Include defined tables here
+@DriftDatabase(tables: [PrefEntity]) // Include defined tables here
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 

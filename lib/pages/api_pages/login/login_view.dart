@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:getx_demo/common/app_constants.dart';
+import 'package:getx_demo/global.dart';
 import 'package:getx_demo/common/custom_textfield.dart';
 import 'login_controller.dart';
 
@@ -11,7 +11,7 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => AppConstants.hideKeyBoard(),
+      onTap: () => Global.hideKeyBoard(),
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(

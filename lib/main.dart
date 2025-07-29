@@ -6,6 +6,7 @@ import 'package:getx_demo/routing/app_pages.dart';
 import 'routing/app_routes.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: AppPages.pages,
-      initialRoute: AppRoutes.dashboard,
+      initialRoute: AppRoutes.splash,
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.white,
       ),

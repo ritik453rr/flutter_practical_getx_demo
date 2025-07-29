@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+ /// Bg Colors
+  static const Color softGreen = Color.fromRGBO(234, 250, 241, 1.0);
+
+  ///
   static const Color white = Color.fromRGBO(255, 255, 255, 1.0);
   static const Color black = Color.fromRGBO(0, 0, 0, 1.0);
   static const Color darkPurple = Color.fromRGBO(8, 7, 14, 1.0);

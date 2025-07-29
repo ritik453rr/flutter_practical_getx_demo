@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
-import 'package:getx_demo/common/app_constants.dart';
+import 'package:getx_demo/global.dart';
 import 'package:getx_demo/common/app_permissions.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -15,7 +15,7 @@ class PickMediaController extends GetxController {
     mediaReq();
   }
 
-  void mediaReq()async{
+  void mediaReq() async {
     await AppPermissions.requestPermission(Permission.camera);
     AppPermissions.requestPermission(Permission.photos);
   }
@@ -39,7 +39,7 @@ class PickMediaController extends GetxController {
                       await picker.pickImage(source: ImageSource.camera);
                   imagePaths.value = image?.path ?? '';
                 } else {
-                  AppConstants.showPermissionDeniedDialog(
+                  Global.showPermissionDeniedDialog(
                       title: "Permission Denied",
                       message: "Please allow camera access to take pictures.");
                 }
@@ -55,7 +55,7 @@ class PickMediaController extends GetxController {
                       await picker.pickImage(source: ImageSource.gallery);
                   imagePaths.value = images?.path ?? '';
                 } else {
-                  AppConstants.showPermissionDeniedDialog(
+                  Global.showPermissionDeniedDialog(
                       title: "Permission Denied",
                       message: "Please allow gallery access to choose images.");
                 }

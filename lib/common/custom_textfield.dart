@@ -13,6 +13,7 @@ class CustomTextfield extends StatelessWidget {
   final IconData? prefixIcon;
   final bool obscureText;
   final String? errorText;
+  final String? hintText;
   final List<TextInputFormatter>? inputFormatters;
   final void Function(String)? onChanged;
   const CustomTextfield({
@@ -21,6 +22,7 @@ class CustomTextfield extends StatelessWidget {
     this.keyboardType,
     this.fillColor,
     this.filled,
+    this.hintText,
     this.suffixIcon,
     this.onTapSuffixIcon,
     this.labelText,
@@ -39,10 +41,12 @@ class CustomTextfield extends StatelessWidget {
       obscureText:obscureText,
       inputFormatters:inputFormatters ,
       onChanged: onChanged,
+    
       decoration: InputDecoration(
         fillColor: fillColor,
         labelText: labelText,
         errorText:errorText ,
+        hintText:hintText ,
       
         prefixIcon: Icon(prefixIcon),
         filled: filled,

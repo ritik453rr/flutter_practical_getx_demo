@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:getx_demo/api_service/api_endpoint.dart';
 import 'package:getx_demo/api_service/api_service.dart';
 import 'package:getx_demo/api_service/response_model.dart';
-import 'package:getx_demo/common/app_constants.dart';
+import 'package:getx_demo/global.dart';
 import 'package:getx_demo/common/common_ui.dart';
 import 'package:getx_demo/routing/app_routes.dart';
 
@@ -69,7 +69,7 @@ class LoginController extends GetxController {
 
   // Handle login
   void login() async {
-    AppConstants.hideKeyBoard();
+    Global.hideKeyBoard();
     if (!validateEmail() || !validatePassword() || isLoading.value) return;
     try {
       isLoading.value = true;

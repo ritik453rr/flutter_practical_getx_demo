@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/app_font_sizes.dart';
 import 'package:getx_demo/common/common_ui.dart';
-import 'package:getx_demo/common/app_constants.dart';
+import 'package:getx_demo/global.dart';
 import 'package:getx_demo/pages/pick_media/pick_media_controller.dart';
 
 class PickMediaView extends GetView<PickMediaController> {

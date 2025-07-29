@@ -1,13 +1,13 @@
 import 'package:circular_progress_stack/circular_progress_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_demo/common/app_constants.dart';
+import 'package:getx_demo/global.dart';
 import 'package:getx_demo/common/common_ui.dart';
 import 'package:getx_demo/common/custom_button.dart';
 import 'package:getx_demo/pages/onboarding/onboarding_main/onboarding_controller.dart';
 
 class OnboardingView extends StatelessWidget {
-   OnboardingView({super.key});
+  OnboardingView({super.key});
   final controller = Get.find<OnboardingController>();
 
   @override
@@ -15,8 +15,7 @@ class OnboardingView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           body: Container(
-        padding:
-            EdgeInsets.symmetric(horizontal: AppConstants.horizontalPadding),
+        padding: EdgeInsets.symmetric(horizontal: Global.horizontalPadding),
         width: Get.width,
         child: Column(
           children: [
@@ -50,30 +49,31 @@ class OnboardingView extends StatelessWidget {
                   ],
                 ),
                 Obx(
-                  () => 
-                  controller.showContainer1.value?
-                  Container(
-                      height: 60,
-                      width: 90,
-                      decoration:
-                          CommonUi.roundBoxDecoration(color: Colors.yellow)):const SizedBox(),
+                  () => controller.showContainer1.value
+                      ? Container(
+                          height: 60,
+                          width: 90,
+                          decoration:
+                              CommonUi.roundBoxDecoration(color: Colors.yellow))
+                      : const SizedBox(),
                 ),
-                Obx(()=>
-                controller.showContainer2.value?
-                Positioned(
-                  right: 0,
-                  bottom: 0,
-                  child: Container(
-                      height: 60,
-                      width: 90,
-                      decoration:
-                          CommonUi.roundBoxDecoration(color: Colors.yellow))):const SizedBox(),
+                Obx(
+                  () => controller.showContainer2.value
+                      ? Positioned(
+                          right: 0,
+                          bottom: 0,
+                          child: Container(
+                              height: 60,
+                              width: 90,
+                              decoration: CommonUi.roundBoxDecoration(
+                                  color: Colors.yellow)))
+                      : const SizedBox(),
                 ),
               ],
             ),
             const Spacer(),
             CustomButton(onPressed: () {}, width: Get.width, title: "Next"),
-            const SizedBox(height: AppConstants.bottomSpace),
+            const SizedBox(height: Global.bottomSpace),
           ],
         ),
       )),
