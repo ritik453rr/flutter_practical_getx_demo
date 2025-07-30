@@ -5,7 +5,7 @@ class StaticResources {
     "Do you have any known allergies or intolerances?",
     "Do you have any known allergies or intolerances?",
     "Do you have any known allergies or intolerances?",
-    // "Which of these ingredients would you like to avoid?",
+    "Which of these ingredients would you like to avoid?",
     // "What are your current health goals?",
     // "Who are you shopping or scanning for?",
   ];
@@ -71,6 +71,7 @@ class StaticResources {
       isSelected: false,
       isOwnProduct: false,
     ),
+   
     PrefEntityData(
       pageNo: 1,
       optId: "7",
@@ -163,6 +164,70 @@ class StaticResources {
     PrefEntityData(
       pageNo: 2,
       optId: "17",
+      title: "Corn",
+      subtitle: "",
+      isSelected: false,
+      isOwnProduct: false,
+    ),
+
+    /// Page 3
+    PrefEntityData(
+      pageNo: 3,
+      optId: "18",
+      title: "Dairy",
+      subtitle: "",
+      isSelected: false,
+      isOwnProduct: false,
+    ),
+
+    PrefEntityData(
+      pageNo: 3,
+      optId: "19",
+      title: "Eggs",
+      subtitle: "",
+      isSelected: false,
+      isOwnProduct: false,
+    ),
+
+    PrefEntityData(
+      pageNo: 3,
+      optId: "20",
+      title: "Glutan",
+      subtitle: "",
+      isSelected: false,
+      isOwnProduct: false,
+    ),
+
+    PrefEntityData(
+      pageNo: 3,
+      optId: "21",
+      title: "Nuts",
+      subtitle: "",
+      isSelected: false,
+      isOwnProduct: false,
+    ),
+
+    PrefEntityData(
+      pageNo: 3,
+      optId: "22",
+      title: "ShellFish",
+      subtitle: "",
+      isSelected: false,
+      isOwnProduct: false,
+    ),
+
+    PrefEntityData(
+      pageNo: 3,
+      optId: "23",
+      title: "Soy",
+      subtitle: "",
+      isSelected: false,
+      isOwnProduct: false,
+    ),
+
+    PrefEntityData(
+      pageNo: 3,
+      optId: "24",
       title: "Corn",
       subtitle: "",
       isSelected: false,

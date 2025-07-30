@@ -15,10 +15,25 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: 
+      
+      // Center(
+      //     child: TextAnimator(
+      //   "Splash",
+      //   style: CommonUi.customTextStyle(
+      //     fontSize: AppFontSizes.font50,
+      //     color: AppColors.black,
+      //     fontFamily: AppFonts.semiBold,
+      //   ),
+      //   characterDelay: const Duration(milliseconds: 100),
+      //   incomingEffect: WidgetTransitionEffects(
+      //       scale: 1.5, duration: const Duration(seconds: 3)),
+      // )),
+
+      Center(
         child: WidgetAnimator(
           incomingEffect: WidgetTransitionEffects.incomingScaleUp(
-            duration: const Duration(milliseconds: 1200),
+            duration: const Duration(milliseconds: 1500),
             curve: Curves.easeInOut,
           ),
           child: Text(

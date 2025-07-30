@@ -17,6 +17,10 @@ var onboardPages = [
     question: StaticResources.onboardQues[2],
     pageNo: 2,
   ),
+  commonOnboardView(
+    question: StaticResources.onboardQues[3],
+    pageNo: 3,
+  ),
 ];
 
 Widget commonOnboardView(
@@ -24,10 +28,12 @@ Widget commonOnboardView(
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
+      Text("Page:${pageNo}"),
       Text(question),
       Obx(
         () => Flexible(
           child: ListView.builder(
+            physics: ClampingScrollPhysics(),
             itemCount: Global.prefOptions
                 .where((item) => item.pageNo == pageNo)
                 .toList()

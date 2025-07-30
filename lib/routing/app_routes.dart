@@ -16,4 +16,5 @@ class AppRoutes {
   static const String onboarding = '/onboarding';
   static const dashboard = "/dashboard";
   static const String labelOnboarding = '/labelOnboarding';
+  static const String labelWelcome = '/labelWelcome';
 }

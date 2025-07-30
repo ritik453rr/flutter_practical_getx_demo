@@ -9,8 +9,9 @@ import 'package:getx_demo/pages/expension_tile/expension_tile_binding.dart';
 import 'package:getx_demo/pages/expension_tile/expension_tile_view.dart';
 import 'package:getx_demo/pages/future_builder/future_builder_binding.dart';
 import 'package:getx_demo/pages/future_builder/future_builder_view.dart';
-import 'package:getx_demo/pages/label_iq/label_onboarad/label_onboard_binding.dart';
-import 'package:getx_demo/pages/label_iq/label_onboarad/label_onboarding_view.dart';
+import 'package:getx_demo/pages/label_iq/label_onboarad/label_onboard_main/label_onboard_binding.dart';
+import 'package:getx_demo/pages/label_iq/label_onboarad/label_onboard_main/label_onboarding_view.dart';
+import 'package:getx_demo/pages/label_iq/label_onboarad/label_welcome/label_welcome_view.dart';
 import 'package:getx_demo/pages/number_picker/number_picker_binding.dart';
 import 'package:getx_demo/pages/number_picker/number_picker_view.dart';
 import 'package:getx_demo/pages/date_time/date_time_binding.dart';
@@ -96,6 +97,10 @@ class AppPages {
       name: AppRoutes.labelOnboarding,
       page: () => LabelOnboardingView(),
       binding: LabelOnboardingBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.labelWelcome,
+      page: () => LabelWelcomeView(),
     ),
   ];
 }

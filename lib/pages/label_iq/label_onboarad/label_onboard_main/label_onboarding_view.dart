@@ -5,8 +5,8 @@ import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/global.dart';
 import 'package:getx_demo/common/custom_app_bar.dart';
 import 'package:getx_demo/common/custom_button.dart';
-import 'package:getx_demo/pages/label_iq/label_onboarad/label_controller.dart';
-import 'package:getx_demo/pages/label_iq/label_onboarad/widgets_label_onboard.dart';
+import 'package:getx_demo/pages/label_iq/label_onboarad/label_onboard_main/label_controller.dart';
+import 'package:getx_demo/pages/label_iq/label_onboarad/label_onboard_main/widgets_label_onboard.dart';
 
 class LabelOnboardingView extends StatelessWidget {
   LabelOnboardingView({super.key});
@@ -32,10 +32,18 @@ class LabelOnboardingView extends StatelessWidget {
               ),
               Expanded(
                 child: PageView(
+                    physics: ClampingScrollPhysics(),
+                    onPageChanged: (value) {
+                      controller.onPageChanged(value);
+                    },
                     controller: controller.pageController,
                     children: onboardPages),
               ),
-              CustomButton(onPressed: () {}, title: "Next"),
+              CustomButton(
+                  onPressed: () {
+                    controller.onTapNext();
+                  },
+                  title: "Next"),
               SizedBox(height: Global.bottomSpace)
             ],
           ),

@@ -20,7 +20,7 @@ class DatabaseQuries {
   }
 
   /// Delete all rows from PrefEntity table
-  static Future<void> clearPrefTable() async {
+  static Future<void> deldePrefsTable() async {
     await Global.database.delete(Global.database.prefEntity).go();
   }
 
