@@ -12,7 +12,7 @@ class FutureBuilderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: "Future Builder"),
+      appBar: customAppBar(title: "Future Builder"),
       body: SizedBox(
         width: Get.width,
         height: Get.height,

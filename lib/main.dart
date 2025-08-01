@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.white,
       ),
-      defaultTransition: Transition.native,
+      defaultTransition: Transition.rightToLeft,
       translations: AppLanguge(),
       locale: const Locale('en', 'US'),
     );

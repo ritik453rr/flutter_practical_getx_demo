@@ -7,12 +7,12 @@ class AppStorage {
   static const prefsStarted = "prefsStarted";
   static const prefPageIndex = "prefPageIndex";
 
-/// Gets the status of preferences started
-  static bool prefsStatus(){
+  /// Gets the status of preferences started
+  static bool prefsStatus() {
     return getStorage.read(prefsStarted) ?? false;
   }
 
-/// Sets the status of preferences started
+  /// Sets the status of preferences started
   static void setPrefsStatus(bool status) {
     getStorage.write(prefsStarted, status);
   }
@@ -27,4 +27,8 @@ class AppStorage {
     getStorage.write(prefPageIndex, index);
   }
 
+  /// Clear storage
+  static void clearStorage() {
+    getStorage.erase();
+  }
 }

@@ -13,7 +13,7 @@ class StreamBuilderView extends GetView<StreamBuilderController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: "Stream Builder"),
+      appBar:  customAppBar(title: "Stream Builder"),
       body: Container(
         height: Get.height,
         width: Get.width,

@@ -1,3 +1,4 @@
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_fonts.dart';
@@ -11,25 +12,27 @@ class LabelWelcomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Welcome to LabelIQ",
-              style: CommonUi.customTextStyle(
-                  fontSize: 24, fontFamily: AppFonts.fontMedium),
-            ),
-            SizedBox(height: 20),
-            CustomButton(
-                onPressed: () {
-                  AppStorage.setPrefsStatus(true);
-                  Get.offNamed(AppRoutes.labelOnboarding);
-                },
-                title: "Get Started")
-          ],
+    return ColorfulSafeArea(
+      top: false,
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Welcome to LabelIQ",
+                style: CommonUi.customTextStyle(
+                    fontSize: 24, fontFamily: AppFonts.fontMedium),
+              ),
+              SizedBox(height: 20),
+              CustomButton(
+                  onPressed: () {
+                    Get.toNamed(AppRoutes.slideUp);
+                  },
+                  title: "Get Started")
+            ],
+          ),
         ),
       ),
     );

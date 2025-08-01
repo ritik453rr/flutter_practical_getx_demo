@@ -17,7 +17,7 @@ class LabelOnboardingView extends StatelessWidget {
       top: false,
       child: Scaffold(
         backgroundColor: AppColors.softGreen,
-        appBar: CustomAppBar(
+        appBar: customAppBar(
           title: "Onboarding",
           centerTitle: true,
           backgroundColor: AppColors.softGreen,

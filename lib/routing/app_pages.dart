@@ -9,6 +9,8 @@ import 'package:getx_demo/pages/expension_tile/expension_tile_binding.dart';
 import 'package:getx_demo/pages/expension_tile/expension_tile_view.dart';
 import 'package:getx_demo/pages/future_builder/future_builder_binding.dart';
 import 'package:getx_demo/pages/future_builder/future_builder_view.dart';
+import 'package:getx_demo/pages/label_iq/label_dashboard/slide_up/slide_up_binding.dart';
+import 'package:getx_demo/pages/label_iq/label_dashboard/slide_up/slide_up_view.dart';
 import 'package:getx_demo/pages/label_iq/label_onboarad/label_onboard_main/label_onboard_binding.dart';
 import 'package:getx_demo/pages/label_iq/label_onboarad/label_onboard_main/label_onboarding_view.dart';
 import 'package:getx_demo/pages/label_iq/label_onboarad/label_welcome/label_welcome_view.dart';
@@ -101,6 +103,11 @@ class AppPages {
     GetPage(
       name: AppRoutes.labelWelcome,
       page: () => LabelWelcomeView(),
+    ),
+    GetPage(
+      name: AppRoutes.slideUp,
+     page: ()=>SlideUpView(),
+     binding: SlideUpBinding(),
     ),
   ];
 }

@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/Dialog/app_adaptive_dialog.dart';
+import 'package:getx_demo/Dialog/custom_dialog.dart';
 import 'package:getx_demo/common/app_storage.dart';
 
 class LabelOnboardController extends GetxController {

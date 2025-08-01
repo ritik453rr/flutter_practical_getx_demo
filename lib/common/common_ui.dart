@@ -62,42 +62,7 @@ class CommonUi {
     );
   }
 
-  /// A method to show an adaptive dialog with a title and content.
-  static Future adaptiveDialog({String? title, required String content}) {
-    return showAdaptiveDialog(
-      context: Get.context!,
-      builder: (context) {
-        return AlertDialog.adaptive(
-          title: Text(
-            title ?? "Error",
-            style: customTextStyle(fontSize: 24, color: AppColors.black),
-          ),
-          content: Text(
-            content,
-            style: customTextStyle(
-              fontSize: AppFontSizes.font14,
-              color: AppColors.black,
-              fontFamily: AppFonts.fontMedium,
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Get.back();
-              },
-              child: Text(
-                AppStrings.ok.tr,
-                style: customTextStyle(
-                  color: AppColors.colorTealGreen,
-                  fontFamily: AppFonts.bold,
-                ),
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
+  
 
 /// 
   static roundBoxDecoration({Color color =AppColors.white,double borderRadius=20}) {
