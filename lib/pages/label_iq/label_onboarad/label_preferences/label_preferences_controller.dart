@@ -5,7 +5,7 @@ import 'package:getx_demo/Dialog/app_adaptive_dialog.dart';
 import 'package:getx_demo/Dialog/custom_dialog.dart';
 import 'package:getx_demo/common/app_storage.dart';
 
-class LabelOnboardController extends GetxController {
+class LabelPreferencesController extends GetxController {
   late int pageIndex;
   late PageController pageController;
 

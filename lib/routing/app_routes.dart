@@ -13,9 +13,9 @@ class AppRoutes {
   static const String streamBuilder = '/streamBuilder';
   static const String home = '/home';
   static const String login = '/login';
-  static const String onboarding = '/onboarding';
-  static const dashboard = "/dashboard";
   static const String labelOnboarding = '/labelOnboarding';
+  static const dashboard = "/dashboard";
+  static const String labelPreferences = '/labelPreferences';
   static const String labelWelcome = '/labelWelcome';
   static const String slideUp = '/slideUp';
 }

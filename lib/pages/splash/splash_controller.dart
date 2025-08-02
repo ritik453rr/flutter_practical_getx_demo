@@ -12,13 +12,13 @@ class SplashController extends GetxController {
     // DatabaseQuries.deldePrefsTable();
 
     Future.delayed(const Duration(seconds: 2), () async {
-    navigation();
+      navigation();
     });
   }
 
   void navigation() {
     if (AppStorage.prefsStatus()) {
-      Get.offNamed(AppRoutes.labelOnboarding);
+      Get.offNamed(AppRoutes.labelPreferences);
     } else {
       Get.offNamed(AppRoutes.labelWelcome);
     }
