@@ -18,4 +18,6 @@ class AppRoutes {
   static const String labelPreferences = '/labelPreferences';
   static const String labelWelcome = '/labelWelcome';
   static const String slideUp = '/slideUp';
+  static const String scan = '/scan';
+  static const String cameraPermission= '/cameraPermission';
 }

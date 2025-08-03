@@ -3,12 +3,16 @@ import 'package:getx_demo/pages/api_pages/home/home_binding.dart';
 import 'package:getx_demo/pages/api_pages/home/home_view.dart';
 import 'package:getx_demo/pages/api_pages/login/login_binding.dart';
 import 'package:getx_demo/pages/api_pages/login/login_view.dart';
+import 'package:getx_demo/pages/label_iq/label_dashboard/camera_permission/camera_permission_binding.dart';
+import 'package:getx_demo/pages/label_iq/label_dashboard/camera_permission/camera_permission_view.dart';
 import 'package:getx_demo/pages/label_iq/label_dashboard/label_dashboard_main/label_dashboard_binding.dart';
 import 'package:getx_demo/pages/label_iq/label_dashboard/label_dashboard_main/label_dashboard_view.dart';
 import 'package:getx_demo/pages/expension_tile/expension_tile_binding.dart';
 import 'package:getx_demo/pages/expension_tile/expension_tile_view.dart';
 import 'package:getx_demo/pages/future_builder/future_builder_binding.dart';
 import 'package:getx_demo/pages/future_builder/future_builder_view.dart';
+import 'package:getx_demo/pages/label_iq/label_dashboard/scan/scan_binding.dart';
+import 'package:getx_demo/pages/label_iq/label_dashboard/scan/scan_view.dart';
 import 'package:getx_demo/pages/label_iq/label_dashboard/slide_up/slide_up_binding.dart';
 import 'package:getx_demo/pages/label_iq/label_dashboard/slide_up/slide_up_view.dart';
 import 'package:getx_demo/pages/label_iq/label_onboarad/label_preferences/label_preferences_binding.dart';
@@ -108,6 +112,16 @@ class AppPages {
       name: AppRoutes.slideUp,
       page: () => SlideUpView(),
       binding: SlideUpBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.scan,
+      page: () => ScanView(),
+      binding: ScanBindig(),
+    ),
+    GetPage(
+      name: AppRoutes.cameraPermission,
+      page: () => CameraPermissionView(),
+      binding: CameraPermissionBinding(),
     ),
   ];
 }
