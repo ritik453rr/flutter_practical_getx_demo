@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:getx_demo/pages/label_iq/label_dashboard/label_dashboard_controller.dart';
+import 'package:getx_demo/pages/label_iq/label_dashboard/label_dashboard_main/label_dashboard_controller.dart';
 
 class LabelDashboardBinding extends Bindings {
   @override

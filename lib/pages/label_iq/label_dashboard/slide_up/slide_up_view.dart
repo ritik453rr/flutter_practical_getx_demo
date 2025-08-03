@@ -190,10 +190,123 @@ class SlideUpView extends StatelessWidget {
                               ),
                             ],
                           )
-                        : Container(
-                            height: 100,
-                            width: Get.width,
-                            color: Colors.red,
+                        :
+
+                        /// ingredients tab view
+                        Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Ingredients",
+                                style: CommonUi.customTextStyle(
+                                    fontSize: 18,
+                                    fontFamily: AppFonts.semiBold),
+                              ),
+                              const SizedBox(
+                                height: 4,
+                              ),
+                              ListView.builder(
+                                  itemCount: controller.ingredientList.length,
+                                  shrinkWrap: true,
+                                  padding: EdgeInsets.only(bottom: 24),
+                                  physics: NeverScrollableScrollPhysics(),
+                                  itemBuilder: (context, index) {
+                                    var item = controller.ingredientList[index];
+                                    return ExpansionTile(
+                                      tilePadding: EdgeInsets.zero,
+                                      maintainState: true,
+                                      collapsedShape: Border(),
+                                      childrenPadding: EdgeInsets.zero,
+                                      // dense: true,
+                                      // visualDensity: VisualDensity.compact,
+                                      // controller: controller.expTileController,
+                                      expandedAlignment: Alignment.centerLeft,
+                                      leading: const Icon(
+                                        Icons.water_drop,
+                                        color: Colors.green,
+                                      ),
+                                      title: Text(
+                                        "Water",
+                                        style: CommonUi.customTextStyle(
+                                          fontFamily: AppFonts.semiBold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+
+                                      shape: const RoundedRectangleBorder(
+                                          side: BorderSide.none),
+
+                                      onExpansionChanged: (val) {
+                                        item.isExpand.value = val;
+                                      },
+                                      trailing: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text(
+                                            "~60%",
+                                            style: CommonUi.customTextStyle(
+                                              fontFamily: AppFonts.semiBold,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 4,
+                                          ),
+                                          Obx(() {
+                                            return item.isExpand.value
+                                                ? Icon(
+                                                    Icons.arrow_forward_ios,
+                                                    size: 18,
+                                                  )
+                                                : Icon(
+                                                    Icons.arrow_back_ios,
+                                                    size: 18,
+                                                  );
+                                          }),
+                                        ],
+                                      ),
+
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                  right: 80,
+                                                ),
+                                                child: Text(
+                                                    "Used as a base for sorber. No known risks."),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 30,
+                                              width: 50,
+                                              decoration:
+                                                  CommonUi.roundBoxDecoration(
+                                                      borderRadius: 16,
+                                                      color: Colors.grey[400]!),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    );
+                                  }),
+                              Text(
+                                "Options",
+                                style: CommonUi.customTextStyle(
+                                    fontSize: 18,
+                                    fontFamily: AppFonts.semiBold),
+                              ),
+                              SizedBox(
+                                height: 16,
+                              ),
+                              optionList(),
+                              SizedBox(
+                                height: 80,
+                              ),
+                            ],
                           );
                   }),
                 ],

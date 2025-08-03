@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_demo/pages/label_iq/label_dashboard/label_dashboard_controller.dart';
-import 'package:getx_demo/pages/label_iq/label_dashboard/widgets_label_dashboard.dart';
+import 'package:getx_demo/pages/label_iq/label_dashboard/label_dashboard_main/label_dashboard_controller.dart';
+import 'package:getx_demo/pages/label_iq/label_dashboard/label_dashboard_main/widgets_label_dashboard.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 
 class LabelDashboardView extends StatelessWidget {
