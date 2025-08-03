@@ -6,7 +6,7 @@ import 'package:getx_demo/language/app_language.dart';
 import 'package:getx_demo/routing/app_pages.dart';
 import 'routing/app_routes.dart';
 
-void main() async{
+void main() async {
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
@@ -22,16 +22,16 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: AppPages.pages,
-      initialRoute: AppRoutes.slideUp,
+      defaultTransition: Transition.rightToLeft,
+      translations: AppLanguge(),
+      locale: const Locale('en', 'US'),
+      initialRoute: AppRoutes.dashboard,
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.white,
         splashColor: Colors.transparent,
         splashFactory: NoSplash.splashFactory,
         highlightColor: Colors.transparent,
       ),
-      defaultTransition: Transition.rightToLeft,
-      translations: AppLanguge(),
-      locale: const Locale('en', 'US'),
     );
   }
 }
