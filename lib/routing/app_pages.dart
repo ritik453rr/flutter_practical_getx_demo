@@ -31,6 +31,8 @@ import 'package:getx_demo/pages/stream_builder/stream_builder_view.dart';
 import 'package:getx_demo/pages/splash/splash_binding.dart';
 import 'package:getx_demo/pages/verify_phone/verify_phone_binding.dart';
 import 'package:getx_demo/pages/verify_phone/verify_phone_view.dart';
+import 'package:getx_demo/pages/web_view/app_web_binding.dart';
+import 'package:getx_demo/pages/web_view/app_web_view.dart';
 import 'package:getx_demo/routing/app_routes.dart';
 import '../pages/splash/splash_view.dart';
 
@@ -123,5 +125,11 @@ class AppPages {
       page: () => CameraPermissionView(),
       binding: CameraPermissionBinding(),
     ),
+    GetPage(
+      name: AppRoutes.appWeb,
+      page: () => AppWebView(),
+      binding: AppWebBinding(),
+    ),
   ];
+
 }

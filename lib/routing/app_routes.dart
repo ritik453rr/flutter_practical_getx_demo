@@ -20,4 +20,5 @@ class AppRoutes {
   static const String slideUp = '/slideUp';
   static const String scan = '/scan';
   static const String cameraPermission= '/cameraPermission';
+  static const String appWeb = '/appWeb';
 }
