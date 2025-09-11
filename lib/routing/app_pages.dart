@@ -3,8 +3,6 @@ import 'package:getx_demo/pages/api_pages/home/home_binding.dart';
 import 'package:getx_demo/pages/api_pages/home/home_view.dart';
 import 'package:getx_demo/pages/api_pages/login/login_binding.dart';
 import 'package:getx_demo/pages/api_pages/login/login_view.dart';
-import 'package:getx_demo/pages/future_builder/future_builder_binding.dart';
-import 'package:getx_demo/pages/future_builder/future_builder_view.dart';
 import 'package:getx_demo/pages/stream_builder/stream_builder_binding.dart';
 import 'package:getx_demo/pages/stream_builder/stream_builder_view.dart';
 import 'package:getx_demo/pages/web_view/app_web_binding.dart';
@@ -16,11 +14,7 @@ class AppPages {
   // List of all pages with their routes, views, and bindings
   static final pages = [
   
-    GetPage(
-      name: AppRoutes.futureBuilder,
-      page: () => const FutureBuilderView(),
-      binding: FutureBuilderBinding(),
-    ),
+
     GetPage(
       name: AppRoutes.streamBuilder,
       page: () => const StreamBuilderView(),
