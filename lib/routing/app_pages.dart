@@ -3,73 +3,19 @@ import 'package:getx_demo/pages/api_pages/home/home_binding.dart';
 import 'package:getx_demo/pages/api_pages/home/home_view.dart';
 import 'package:getx_demo/pages/api_pages/login/login_binding.dart';
 import 'package:getx_demo/pages/api_pages/login/login_view.dart';
-import 'package:getx_demo/pages/label_iq/label_dashboard/camera_permission/camera_permission_binding.dart';
-import 'package:getx_demo/pages/label_iq/label_dashboard/camera_permission/camera_permission_view.dart';
-import 'package:getx_demo/pages/label_iq/label_dashboard/label_dashboard_main/label_dashboard_binding.dart';
-import 'package:getx_demo/pages/label_iq/label_dashboard/label_dashboard_main/label_dashboard_view.dart';
-import 'package:getx_demo/pages/expension_tile/expension_tile_binding.dart';
-import 'package:getx_demo/pages/expension_tile/expension_tile_view.dart';
 import 'package:getx_demo/pages/future_builder/future_builder_binding.dart';
 import 'package:getx_demo/pages/future_builder/future_builder_view.dart';
-import 'package:getx_demo/pages/label_iq/label_dashboard/scan/scan_binding.dart';
-import 'package:getx_demo/pages/label_iq/label_dashboard/scan/scan_view.dart';
-import 'package:getx_demo/pages/label_iq/label_dashboard/slide_up/slide_up_binding.dart';
-import 'package:getx_demo/pages/label_iq/label_dashboard/slide_up/slide_up_view.dart';
-import 'package:getx_demo/pages/label_iq/label_onboarad/label_preferences/label_preferences_binding.dart';
-import 'package:getx_demo/pages/label_iq/label_onboarad/label_preferences/label_preferences_view.dart';
-import 'package:getx_demo/pages/label_iq/label_onboarad/label_welcome/label_welcome_view.dart';
-import 'package:getx_demo/pages/number_picker/number_picker_binding.dart';
-import 'package:getx_demo/pages/number_picker/number_picker_view.dart';
-import 'package:getx_demo/pages/date_time/date_time_binding.dart';
-import 'package:getx_demo/pages/date_time/date_time_view.dart';
-import 'package:getx_demo/pages/label_iq/label_onboarad/label_onboard_main/label_onboarding_binding.dart';
-import 'package:getx_demo/pages/label_iq/label_onboarad/label_onboard_main/label_onboarding_view.dart';
-import 'package:getx_demo/pages/pick_media/pick_media_binding.dart';
-import 'package:getx_demo/pages/pick_media/pick_media_view.dart';
 import 'package:getx_demo/pages/stream_builder/stream_builder_binding.dart';
 import 'package:getx_demo/pages/stream_builder/stream_builder_view.dart';
-import 'package:getx_demo/pages/splash/splash_binding.dart';
-import 'package:getx_demo/pages/verify_phone/verify_phone_binding.dart';
-import 'package:getx_demo/pages/verify_phone/verify_phone_view.dart';
 import 'package:getx_demo/pages/web_view/app_web_binding.dart';
 import 'package:getx_demo/pages/web_view/app_web_view.dart';
 import 'package:getx_demo/routing/app_routes.dart';
-import '../pages/splash/splash_view.dart';
 
 // Defines the application's page routes and their corresponding bindings using GetX
 class AppPages {
   // List of all pages with their routes, views, and bindings
   static final pages = [
-    GetPage(
-      name: AppRoutes.numberPicker,
-      page: () => const NumberPickerView(),
-      binding: NumberPickerBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.verifyPhone,
-      page: () => const VerifyPhoneView(),
-      binding: VerifyPhonBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.dateTime,
-      page: () => const DateTimeView(),
-      binding: DateTimeBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.splash,
-      page: () => SplashView(),
-      binding: SplashBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.expensionTile,
-      page: () => const ExpensionTileView(),
-      binding: ExpensionTileBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.pickMedia,
-      page: () => const PickMediaView(),
-      binding: PickMediaBinding(),
-    ),
+  
     GetPage(
       name: AppRoutes.futureBuilder,
       page: () => const FutureBuilderView(),
@@ -90,41 +36,7 @@ class AppPages {
       page: () => const LoginView(),
       binding: LoginBinding(),
     ),
-    GetPage(
-      name: AppRoutes.labelOnboarding,
-      page: () => LabelOnboardingView(),
-      binding: LabelOnboardingBinding(),
-    ),
-    GetPage(
-        name: AppRoutes.dashboard,
-        page: () => LabelDashboardView(),
-        bindings: [
-          LabelDashboardBinding(),
-        ]),
-    GetPage(
-      name: AppRoutes.labelPreferences,
-      page: () => LabelPreferencesView(),
-      binding: LabelPreferencesBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.labelWelcome,
-      page: () => LabelWelcomeView(),
-    ),
-    GetPage(
-      name: AppRoutes.slideUp,
-      page: () => SlideUpView(),
-      binding: SlideUpBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.scan,
-      page: () => ScanView(),
-      binding: ScanBindig(),
-    ),
-    GetPage(
-      name: AppRoutes.cameraPermission,
-      page: () => CameraPermissionView(),
-      binding: CameraPermissionBinding(),
-    ),
+  
     GetPage(
       name: AppRoutes.appWeb,
       page: () => AppWebView(),

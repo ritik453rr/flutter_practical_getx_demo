@@ -4,8 +4,6 @@ import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/app_font_sizes.dart';
 import 'package:getx_demo/common/app_fonts.dart';
 import 'package:getx_demo/common/common_ui.dart';
-import 'package:getx_demo/language/app_strings.dart';
-
 /// A method to show an adaptive dialog with a title and content.
 Future appAdaptiveDialog(
     {String? title,

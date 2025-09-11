@@ -2,10 +2,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:getx_demo/database/app_database.dart' as drift;
-import 'package:getx_demo/database/app_database.dart';
-import 'package:getx_demo/database/database_quries.dart';
-import 'package:getx_demo/database/static_resources.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,8 +9,8 @@ import 'package:url_launcher/url_launcher.dart';
 class Global {
   static const double horizontalPadding = 20.0;
   static const double bottomSpace = 20;
-  static var database = drift.AppDatabase();
-  static var prefOptions = <PrefEntityData>[].obs;
+  static const tempPdfUrl =
+      "https://www.ecma-international.org/wp-content/uploads/ECMA-262_12th_edition_june_2021.pdf";
 
 // Hides the keyboard by removing focus from the current input field
   static hideKeyBoard() {
@@ -30,18 +26,6 @@ class Global {
     }
   }
 
-  /// Initializes the database and checks if preferences exist.
-  static Future<void> initDatabase() async {
-    final rows = await (database.select(database.prefEntity)..limit(1)).get();
-
-    if (rows.isEmpty) {
-      await DatabaseQuries.insertPrefList(StaticResources.onboardOptions);
-    }
-
-    DatabaseQuries.watchAllPreferences().listen((data) {
-      prefOptions.value = data;
-    });
-  }
 
   /// Checks if the device has an active internet connection
   static Future<bool> checkInternetConnection() async {
@@ -92,7 +76,7 @@ class Global {
     );
   }
 
-/// Opens a URL in the default browser
+  /// Opens a URL in the default browser
   static void openLink(String url) async {
     launchUrl(Uri.parse(url));
   }

@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
-import 'package:getx_demo/common/app_font_sizes.dart';
 import 'package:getx_demo/common/app_fonts.dart';
-import 'package:getx_demo/language/app_strings.dart';
-
 class CommonUi {
   /// Set PNG image
   static Widget setPngImg(
@@ -51,20 +47,11 @@ class CommonUi {
     return TextStyle(fontFamily: fontFamily, color: color, fontSize: fontSize);
   }
 
-  /// method to show toast message.
-  static Future appToast({required String toastMsg}) {
-    return Fluttertoast.showToast(
-      msg: toastMsg.toString(),
-      backgroundColor: Colors.grey[800],
-      toastLength: Toast.LENGTH_SHORT,
-      textColor: AppColors.white,
-      fontSize: AppFontSizes.font16,
-    );
-  }
+  
 
   
 
-/// 
+
   static roundBoxDecoration({Color color =AppColors.white,double borderRadius=20}) {
     return BoxDecoration(
         color:color, borderRadius: BorderRadius.circular(borderRadius));
