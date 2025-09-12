@@ -1,0 +1,2 @@
+C:/Users/dell/Desktop/ptcl_flutter/flutter_practical_getx_demo/android/app/.cxx/RelWithDebInfo/2f2g4uu4/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/dell/Desktop/ptcl_flutter/flutter_practical_getx_demo/android/app/.cxx/RelWithDebInfo/2f2g4uu4/x86_64/CMakeFiles/rebuild_cache.dir

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:getx_demo/pages/api_pages/home/home_binding.dart';
-import 'package:getx_demo/pages/api_pages/home/home_view.dart';
+import 'package:getx_demo/pages/api_pages/home-hz-pagination/home_binding.dart';
+import 'package:getx_demo/pages/api_pages/home-hz-pagination/home_view.dart';
 import 'package:getx_demo/pages/api_pages/login/login_binding.dart';
 import 'package:getx_demo/pages/api_pages/login/login_view.dart';
 import 'package:getx_demo/pages/stream_builder/stream_builder_binding.dart';

@@ -4,6 +4,5 @@ class ImgRes {
 
   /// SVGS
   static const String svgDate = "date";
-    static const String svgTime = "time";
-
+  static const String svgTime = "time";
 }

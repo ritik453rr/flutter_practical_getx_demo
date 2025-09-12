@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_demo/common/custom_app_bar.dart';
 import 'package:getx_demo/common/custom_textfield.dart';
 import 'package:getx_demo/pages/stream_builder/stream_builder_controller.dart';
 
@@ -10,7 +9,6 @@ class StreamBuilderView extends GetView<StreamBuilderController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(title: "Stream Builder"),
       body: Container(
         height: Get.height,
         width: Get.width,

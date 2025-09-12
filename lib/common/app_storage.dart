@@ -3,32 +3,14 @@ import 'package:get_storage/get_storage.dart';
 class AppStorage {
   static var getStorage = GetStorage();
 
-  ///Keys
-  static const prefsStarted = "prefsStarted";
-  static const prefPageIndex = "prefPageIndex";
+  // ///Keys
+  static const loginStatus = "login_staus";
 
-  /// Gets the status of preferences started
-  static bool prefsStatus() {
-    return getStorage.read(prefsStarted) ?? false;
+  static bool isLogin() {
+    return getStorage.read(loginStatus) ?? false;
   }
 
-  /// Sets the status of preferences started
-  static void setPrefsStatus(bool status) {
-    getStorage.write(prefsStarted, status);
-  }
-
-  /// get the current page index
-  static int getPrefPageIndex() {
-    return getStorage.read(prefPageIndex) ?? 0;
-  }
-
-  /// set the current page index
-  static void setPrefPageIndex(int index) {
-    getStorage.write(prefPageIndex, index);
-  }
-
-  /// Clear storage
-  static void clearStorage() {
-    getStorage.erase();
+  static void setLogin(bool val) {
+    getStorage.write(loginStatus, val);
   }
 }

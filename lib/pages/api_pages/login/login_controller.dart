@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/api_service/api_endpoint.dart';
+import 'package:getx_demo/api_service/api_models/response_model.dart';
 import 'package:getx_demo/api_service/api_service.dart';
-import 'package:getx_demo/api_service/response_model.dart';
+import 'package:getx_demo/common/app_storage.dart';
 import 'package:getx_demo/global.dart';
 import 'package:getx_demo/common/common_ui.dart';
 import 'package:getx_demo/routing/app_routes.dart';
@@ -75,17 +76,13 @@ class LoginController extends GetxController {
       isLoading.value = true;
       ResponseModel respModel = await apiService.postRequest(
         url: ApiEndPoint.loginUrl,
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-          "x-api-key": "reqres-free-v1",
-        },
         body: {
           "email": emailController.text,
           "password": passwordController.text,
         },
       );
       if (respModel.status) {
+        AppStorage.setLogin(true);
         Get.offAllNamed(AppRoutes.home);
       } else {
         debugPrint(respModel.message);
