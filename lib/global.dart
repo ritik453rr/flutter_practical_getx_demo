@@ -2,12 +2,13 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/common/app_colors.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // Utility class containing global constants and helper methods
 class Global {
-  static const double horizontalPadding = 20.0;
+  static const double hzPadding = 20.0;
   static const double bottomSpace = 20;
   static const tempPdfUrl =
       "https://www.ecma-international.org/wp-content/uploads/ECMA-262_12th_edition_june_2021.pdf";
@@ -79,5 +80,17 @@ class Global {
   /// Opens a URL in the default browser
   static void openLink(String url) async {
     launchUrl(Uri.parse(url));
+  }
+
+   /// Method to set safe area color.
+   static void setSafeArea({bool isDark=false}) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        systemNavigationBarColor: isDark ? AppColors.black : AppColors.white,
+        systemNavigationBarIconBrightness:
+            isDark ? Brightness.light : Brightness.dark,
+        statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+      ),
+    );
   }
 }
