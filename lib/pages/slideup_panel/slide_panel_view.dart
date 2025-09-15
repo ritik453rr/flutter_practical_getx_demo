@@ -6,6 +6,7 @@ import 'package:getx_demo/common/app_font_sizes.dart';
 import 'package:getx_demo/common/app_fonts.dart';
 import 'package:getx_demo/common/common_ui.dart';
 import 'package:getx_demo/global.dart';
+import 'package:getx_demo/routing/app_routes.dart';
 
 class SlidePanelView extends StatelessWidget {
   SlidePanelView({super.key});
@@ -13,6 +14,15 @@ class SlidePanelView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.toNamed(AppRoutes.lifeCycle);
+              },
+              icon: Icon(Icons.route)),
+        ],
+      ),
       body: SafeArea(
         child: Stack(
           children: [

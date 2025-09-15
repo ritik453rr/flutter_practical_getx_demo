@@ -5,4 +5,5 @@ class AppRoutes {
   static const String login = '/login';
   static const String appWeb = '/appWeb';
   static const slidePanel = "/slidePanel";
+  static const lifeCycle = "/lifeCycle";
 }

@@ -3,6 +3,8 @@ import 'package:getx_demo/pages/api_pages/home-hz-pagination/home_binding.dart';
 import 'package:getx_demo/pages/api_pages/home-hz-pagination/home_view.dart';
 import 'package:getx_demo/pages/api_pages/login/login_binding.dart';
 import 'package:getx_demo/pages/api_pages/login/login_view.dart';
+import 'package:getx_demo/pages/life_cycle/life_cycle_binding.dart';
+import 'package:getx_demo/pages/life_cycle/life_cycle_view.dart';
 import 'package:getx_demo/pages/slideup_panel/slide_panel_view.dart';
 import 'package:getx_demo/pages/stream_builder/stream_builder_binding.dart';
 import 'package:getx_demo/pages/stream_builder/stream_builder_view.dart';
@@ -14,8 +16,6 @@ import 'package:getx_demo/routing/app_routes.dart';
 class AppPages {
   // List of all pages with their routes, views, and bindings
   static final pages = [
-  
-
     GetPage(
       name: AppRoutes.streamBuilder,
       page: () => const StreamBuilderView(),
@@ -31,17 +31,19 @@ class AppPages {
       page: () => const LoginView(),
       binding: LoginBinding(),
     ),
-  
     GetPage(
       name: AppRoutes.appWeb,
       page: () => AppWebView(),
       binding: AppWebBinding(),
     ),
-    
     GetPage(
       name: AppRoutes.slidePanel,
       page: () => SlidePanelView(),
     ),
+    GetPage(
+      name: AppRoutes.lifeCycle,
+      page: () => LifeCycleView(),
+      binding: LifeCycleBinding(),
+    ),
   ];
-
 }
