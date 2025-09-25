@@ -26,7 +26,9 @@ class MyApp extends StatelessWidget {
       defaultTransition: Transition.rightToLeft,
       translations: AppLanguge(),
       locale: const Locale('en', 'US'),
-      initialRoute: AppRoutes.slidePanel,
+      initialRoute: AppRoutes.splash,
+      //googleMap,
+      //slidePanel,
       // .slidePanel,
       // AppStorage.isLogin()?AppRoutes.home:AppRoutes.login,
       theme: ThemeData(

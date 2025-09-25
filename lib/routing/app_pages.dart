@@ -3,9 +3,13 @@ import 'package:getx_demo/pages/api_pages/home-hz-pagination/home_binding.dart';
 import 'package:getx_demo/pages/api_pages/home-hz-pagination/home_view.dart';
 import 'package:getx_demo/pages/api_pages/login/login_binding.dart';
 import 'package:getx_demo/pages/api_pages/login/login_view.dart';
+import 'package:getx_demo/pages/google_map/google_map_binding.dart';
+import 'package:getx_demo/pages/google_map/google_map_view.dart';
 import 'package:getx_demo/pages/life_cycle/life_cycle_binding.dart';
 import 'package:getx_demo/pages/life_cycle/life_cycle_view.dart';
 import 'package:getx_demo/pages/slideup_panel/slide_panel_view.dart';
+import 'package:getx_demo/pages/splash/splash_binding.dart';
+import 'package:getx_demo/pages/splash/splash_view.dart';
 import 'package:getx_demo/pages/stream_builder/stream_builder_binding.dart';
 import 'package:getx_demo/pages/stream_builder/stream_builder_view.dart';
 import 'package:getx_demo/pages/web_view/app_web_binding.dart';
@@ -45,5 +49,15 @@ class AppPages {
       page: () => LifeCycleView(),
       binding: LifeCycleBinding(),
     ),
+    GetPage(
+      name: AppRoutes.googleMap,
+      page: () => GoogleMapView(),
+      binding: GoogleMapBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.splash,
+      page: () =>SplashView(),
+      binding: SplashBinding(),
+    )
   ];
 }

@@ -90,8 +90,9 @@ class SlidePanelView extends StatelessWidget {
                       SliverAppBar(
                         pinned: true,
                         automaticallyImplyLeading: false,
-                        surfaceTintColor: AppColors.mediumGray,
-                        backgroundColor: AppColors.white,
+                        surfaceTintColor: Colors.white,
+                        toolbarHeight: 45,
+                        backgroundColor: Colors.white,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(8),
@@ -102,16 +103,16 @@ class SlidePanelView extends StatelessWidget {
                           () => Center(
                             child: SizedBox(
                               width: Get.width,
-                              // height: kToolbarHeight,
+                              height: 45,
                               child: CupertinoSlidingSegmentedControl(
                                 thumbColor: Colors.green,
-                                padding: EdgeInsets.all(2),
+                                padding: const EdgeInsets.all(2),
                                 groupValue: tabIndex.value,
-                                children: {
-                                  0: const Padding(
+                                children: const {
+                                  0: Padding(
                                       padding: EdgeInsets.all(10),
                                       child: Text("data")),
-                                  1: const Padding(
+                                  1: Padding(
                                       padding: EdgeInsets.all(10),
                                       child: Text("data")),
                                 },
