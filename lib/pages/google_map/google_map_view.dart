@@ -11,26 +11,22 @@ class GoogleMapView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Obx(
-
-          () =>
-          controller.isLoading.value?
-          Center(child: CircularProgressIndicator()):
-           GoogleMap(
-            key: controller.mapKey.value,
-            zoomControlsEnabled: false,
-            markers: controller.markers,
-            myLocationEnabled: true,
-            initialCameraPosition: controller.initPos,
-            onMapCreated: (ctr) {
-              controller.onMapCreated(ctr);
-            },
-            onTap: (latng) {
-              controller.onTap(latng);
-            },
-          
-          ),
-        ),
+        child: GetBuilder<GoogleMapViewController>(builder: (cont) {
+          return controller.isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : GoogleMap(
+                  markers: controller.markers,
+                  myLocationButtonEnabled: controller.showUserLoc,
+                  myLocationEnabled: controller.showUserLoc,
+                  initialCameraPosition: controller.initialPos,
+                  onMapCreated: (ctr) {
+                    controller.onMapCreated(ctr);
+                  },
+                  onTap: (latng) {
+                    controller.onTap(latng);
+                  },
+                );
+        }),
       ),
     );
   }
