@@ -23,8 +23,6 @@ class GoogleMapViewController extends GetxController {
     checkLocPermission();
   }
 
-  
-
   /// Method to request location permission if not granted
   Future<void> checkLocPermission() async {
     var locPermission = Permission.location;
@@ -48,7 +46,7 @@ class GoogleMapViewController extends GetxController {
       showUserLoc = true;
       final position = await Geolocator.getCurrentPosition();
       initialPos = CameraPosition(
-        target:  LatLng(position.latitude, position.longitude),
+        target: LatLng(position.latitude, position.longitude),
         zoom: 14.4746,
       );
       isLoading = false;
@@ -67,6 +65,7 @@ class GoogleMapViewController extends GetxController {
       const ImageConfiguration(size: Size(48, 48)), // Optional sizing
       'assets/images/png_images/custom.png',
     );
+    await Future.delayed(Duration(seconds: 5));
     markers.addAll({
       Marker(
         markerId: MarkerId('dhillon_plaza'),
@@ -128,8 +127,8 @@ class GoogleMapViewController extends GetxController {
         infoWindow: InfoWindow(title: 'Proposed Metro Site (Dhakoli)'),
         icon: customIcon,
       ),
-  
     });
+    update();
   }
 
   void onMapCreated(GoogleMapController ctr) {
