@@ -42,15 +42,17 @@ class HomeController extends GetxController {
   }
 
   Future<void> getUsers({bool init = false}) async {
-    ResponseModel resModel = await ApiService()
-        .getRequest(url: "https://jsonplaceholder.typicode.com/users");
+    ResponseModel resModel = await ApiService().getRequest(
+      url: "https://jsonplaceholder.typicode.com/users",
+      model: userModelFromJson,
+    );
 
     if (resModel.status) {
       hasMore = page < 5;
       if (init) {
-        users.value = userModelFromJson(jsonEncode(resModel.data));
+        users.value = resModel.data;
       } else {
-        users.addAll(userModelFromJson(jsonEncode(resModel.data)));
+        users.addAll(resModel.data);
       }
       userLoading.value = false;
     } else {

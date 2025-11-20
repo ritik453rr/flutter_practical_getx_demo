@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/api_service/api_models/response_model.dart';
@@ -7,6 +8,7 @@ class ApiService extends GetConnect {
   /// Sends a GET request to server.
   Future<ResponseModel> getRequest({
     required String url,
+    dynamic model,
   }) async {
     final headers = {
       "Content-Type": "application/json",
@@ -20,7 +22,8 @@ class ApiService extends GetConnect {
       );
 
       if (response.status.isOk) {
-        return ResponseModel(status: true, data: response.body);
+        return ResponseModel(
+            status: true, data: model(jsonEncode(response.body)));
       } else {
         return ResponseModel(status: false, message: "Failed to fetch data");
       }
