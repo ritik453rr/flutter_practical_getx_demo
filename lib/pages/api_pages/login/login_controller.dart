@@ -11,23 +11,19 @@ import 'package:getx_demo/routing/app_routes.dart';
 /// LoginController class to handle login logicc
 class LoginController extends GetxController {
   // controllers and instances
-  late TextEditingController emailController;
-  late TextEditingController passwordController;
-  late ApiService apiService;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  ApiService apiService = ApiService();
 
   // variables
   final isLoading = false.obs;
   final isPasswordVisible = false.obs;
   final emailError = RxnString();
   final passwordError = RxnString();
+  var count1 = 0;
+  var count2 = 0;
 
-  @override
-  void onInit() {
-    super.onInit();
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
-    apiService = ApiService();
-  }
+
 
   @override
   void onClose() {
