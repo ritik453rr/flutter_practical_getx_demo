@@ -34,6 +34,8 @@ class ApiService extends GetConnect {
     }
   }
 
+
+
   /// Sends a POST request to the Server.
   Future<ResponseModel> postRequest({
     required String url,
