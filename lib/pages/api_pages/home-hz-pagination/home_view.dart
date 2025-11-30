@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_storage.dart';
+import 'package:getx_demo/common/common_ui.dart';
 import 'package:getx_demo/routing/app_routes.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'home_controller.dart';
@@ -14,17 +15,19 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   title: const Text("home"),
-      //   actions: [
-      //     IconButton(
-      //         onPressed: () {
-      //           AppStorage.setLogin(false);
-      //           Get.offAllNamed(AppRoutes.login);
-      //         },
-      //         icon: const Icon(Icons.logout))
-      //   ],
-      // ),
+      appBar: AppBar(
+        title: const Text("home"),
+        surfaceTintColor: Colors.white,
+        backgroundColor: Colors.white,
+        actions: [
+          IconButton(
+              onPressed: () {
+                AppStorage.setLogin(false);
+                Get.offAllNamed(AppRoutes.login);
+              },
+              icon: const Icon(Icons.logout))
+        ],
+      ),
       body: SafeArea(
         child: Obx(
           () {
@@ -32,96 +35,95 @@ class HomeView extends GetView<HomeController> {
               onRefresh: () async {
                 controller.onRefresh();
               },
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    //Horizontal Pagination ListView
-                    SizedBox(
-                      height: 100,
-                      child: ListView.builder(
-                        itemCount: controller.users.length +
-                            (controller.loadMore.value ? 1 : 0),
-                        controller: controller.scrollController,
-                        scrollDirection: Axis.horizontal,
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        itemBuilder: (context, index) {
-                          if (index >= controller.users.length) {
-                            return Container(
-                              alignment: Alignment.center,
-                              margin: const EdgeInsets.only(top: 10),
-                              child: const CircularProgressIndicator(),
-                            );
-                          }
-                          return Container(
-                            height: 100,
-                            width: 100,
-                            alignment: Alignment.center,
-                            margin: const EdgeInsets.only(right: 10),
-                            decoration: const BoxDecoration(
-                                color: Colors.red, shape: BoxShape.circle),
-                            child: Text("$index"),
-                          );
-                        },
-                      ),
-                    ),
+              child: !controller.userLoading.value && controller.users.isEmpty
+                  ?
 
-                    !controller.userLoading.value && controller.users.isEmpty
-                        ?
+                  /// Empty state
+                  CommonUi.emptyState()
+                  : ListView(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      controller: controller.vtScrollCtr,
 
-                        /// Empty state
-                        Container(
-                            constraints: BoxConstraints(
-                              minHeight: MediaQuery.of(context).size.height -
-                                  kToolbarHeight -
-                                  MediaQuery.of(context).padding.top,
-                              minWidth: Get.width,
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [Text("No data change")],
-                            ),
-                          )
-                        : Skeletonizer(
-                            enabled: controller.userLoading.value,
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              padding: const EdgeInsets.only(
-                                  top: 20, left: 20, right: 20, bottom: 30),
-                              itemCount: controller.userLoading.value
-                                  ? 10
-                                  : controller.users.length,
-                              itemBuilder: (context, index) {
-                                return controller.userLoading.value
-                                    ? const SizedBox(
-                                        height: 200,
-                                        child: Card(
-                                          color: Colors.white,
-                                          child: ListTile(
-                                            title: Text("User Name"),
-                                            subtitle: Text("User email here"),
-                                          ),
+                      children: [
+                        // Horizontal Pagination ListView
+
+                        // SizedBox(
+                        //   height: 100,
+                        //   child: ListView.builder(
+                        //     itemCount: controller.users.length +
+                        //         (controller.loadMore.value ? 1 : 0),
+                        //     controller: controller.hzScrollCtr,
+                        //     scrollDirection: Axis.horizontal,
+                        //     padding: const EdgeInsets.symmetric(horizontal: 20),
+                        //     itemBuilder: (context, index) {
+                        //       if (index >= controller.users.length) {
+                        //         return Container(
+                        //           alignment: Alignment.center,
+                        //           margin: const EdgeInsets.only(top: 10),
+                        //           child: const CircularProgressIndicator(),
+                        //         );
+                        //       }
+                        //       return Container(
+                        //         height: 100,
+                        //         width: 100,
+                        //         alignment: Alignment.center,
+                        //         margin: const EdgeInsets.only(right: 10),
+                        //         decoration: const BoxDecoration(
+                        //             color: Colors.red, shape: BoxShape.circle),
+                        //         child: Text("$index"),
+                        //       );
+                        //     },
+                        //   ),
+                        // ),
+
+                        Skeletonizer(
+                          enabled: controller.userLoading.value,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            padding: const EdgeInsets.only(
+                                top: 20, left: 20, right: 20, bottom: 30),
+                            itemCount: controller.userLoading.value
+                                ? 10
+                                : controller.users.length +
+                                    (controller.loadMore.value ? 1 : 0),
+                            itemBuilder: (context, index) {
+                              if (index >= controller.users.length &&
+                                  !controller.userLoading.value) {
+                                return Container(
+                                  alignment: Alignment.center,
+                                  margin: const EdgeInsets.only(top: 10),
+                                  child: const CircularProgressIndicator(),
+                                );
+                              }
+                              return controller.userLoading.value
+                                  ? const SizedBox(
+                                      height: 200,
+                                      child: Card(
+                                        color: Colors.white,
+                                        child: ListTile(
+                                          title: Text("User Name"),
+                                          subtitle: Text("User email here"),
                                         ),
-                                      )
-                                    : SizedBox(
-                                        height: 200,
-                                        child: Card(
-                                          color: Colors.white,
-                                          child: ListTile(
-                                            title: Text(
-                                                "${controller.users[index].name}  ${index + 1}"),
-                                            subtitle: Text(
-                                                controller.users[index].email),
-                                          ),
+                                      ),
+                                    )
+                                  : SizedBox(
+                                      height: 200,
+                                      child: Card(
+                                        color: Colors.white,
+                                        child: ListTile(
+                                          title: Text(
+                                              "${controller.users[index].name}  ${index + 1}"),
+                                          subtitle: Text(
+                                              controller.users[index].email),
                                         ),
-                                      );
-                              },
-                            ),
+                                      ),
+                                    );
+                            },
                           ),
-                  ],
-                ),
-              ),
+                        ),
+                      ],
+                    ),
             );
           },
         ),

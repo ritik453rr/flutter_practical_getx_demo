@@ -7,7 +7,8 @@ import 'package:getx_demo/api_service/api_service.dart';
 /// HomeController manages the state and business logic for the home page
 class HomeController extends GetxController {
   /// Controllers and Instances
-  late ScrollController scrollController;
+  var hzScrollCtr = ScrollController();
+  var vtScrollCtr = ScrollController();
 
   // Variables
   var page = 1;
@@ -21,16 +22,23 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    scrollController = ScrollController();
     addScrollListener();
     getUsers(init: true);
   }
 
   /// Add scroll listener to the scroll controller
   void addScrollListener() {
-    scrollController.addListener(() {
-      if (scrollController.position.pixels >=
-              scrollController.position.maxScrollExtent - 150 &&
+    hzScrollCtr.addListener(() {
+      if (hzScrollCtr.position.pixels >=
+              hzScrollCtr.position.maxScrollExtent - 150 &&
+          hasMore &&
+          !loadMore.value) {
+        fetchMoreUsers();
+      }
+    });
+    vtScrollCtr.addListener(() {
+      if (vtScrollCtr.position.pixels >=
+              vtScrollCtr.position.maxScrollExtent - 150 &&
           hasMore &&
           !loadMore.value) {
         fetchMoreUsers();

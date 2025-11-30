@@ -27,7 +27,6 @@ class Global {
     }
   }
 
-
   /// Checks if the device has an active internet connection
   static Future<bool> checkInternetConnection() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
@@ -82,8 +81,8 @@ class Global {
     launchUrl(Uri.parse(url));
   }
 
-   /// Method to set safe area color.
-   static void setSafeArea({bool isDark=false}) {
+  /// Method to set safe area color.
+  static void setSafeArea({bool isDark = false}) {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         systemNavigationBarColor: isDark ? AppColors.black : AppColors.white,

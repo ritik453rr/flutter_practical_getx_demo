@@ -61,4 +61,24 @@ class CommonUi {
   }) {
     return Get.snackbar(title, message, snackPosition: SnackPosition.BOTTOM);
   }
+
+  /// Emty state Widget
+  static emptyState() {
+    return SizedBox(
+        height: Get.height,
+        child: const CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text(
+                    "Empty State",
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ));
+  }
 }
