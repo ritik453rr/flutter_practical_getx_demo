@@ -23,48 +23,7 @@ class LoginView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const SizedBox(height: 60),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GetBuilder<LoginController>(
-                        // tag: "count1",
-                        id: "count1",
-                        builder: (ctr) {
-                          print("Rebuild Count1");
-                          return Text("Count1: ${ctr.count1}");
-                        },
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          controller.count1++;
-                          controller.update(["count1"]);
-                        },
-                        child: Text("Click1"),
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(height: 40),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GetBuilder<LoginController>(
-                        id: "count2",
-                        builder: (ctr) {
-                          print("Rebuild Count2");
-                          return Text("Count2: ${ctr.count2}");
-                        },
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          controller.count2++;
-                          controller.update(["count2"]);
-                        },
-                        child: Text("Click2"),
-                      ),
-                    ],
-                  ),
+                
 
                   // Logo or App Name
                   const Text(

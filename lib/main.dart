@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:getx_demo/common/app_colors.dart';
-import 'package:getx_demo/common/app_storage.dart';
 import 'package:getx_demo/language/app_language.dart';
 import 'package:getx_demo/routing/app_pages.dart';
 import 'global.dart';
@@ -26,12 +25,8 @@ class MyApp extends StatelessWidget {
       defaultTransition: Transition.rightToLeft,
       translations: AppLanguge(),
       locale: const Locale('en', 'US'),
-      initialRoute:
-          // AppRoutes.splash,
-          //googleMap,
-          //slidePanel,
-          // .slidePanel,
-          AppStorage.isLogin() ? AppRoutes.home : AppRoutes.login,
+      initialRoute:AppRoutes.home,
+      // AppStorage.isLogin() ? AppRoutes.home : AppRoutes.login,
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.white,
         splashColor: Colors.transparent,

@@ -1,16 +1,13 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/api_service/api_models/response_model.dart';
 import 'package:getx_demo/api_service/api_models/user_model.dart';
 import 'package:getx_demo/api_service/api_service.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 /// HomeController manages the state and business logic for the home page
 class HomeController extends GetxController {
   /// Controllers and Instances
   late ScrollController scrollController;
-  var refreshController = RefreshController();
 
   // Variables
   var page = 1;
@@ -68,26 +65,25 @@ class HomeController extends GetxController {
     loadMore.value = false;
   }
 
-  onRefresh() async {
+  /// Handle pull-to-refresh action
+  Future<void> onRefresh() async {
+    users.isEmpty ? userLoading.value = true : false;
     page = 1;
     loadMore.value = false;
     hasMore = false;
     await getUsers(init: true);
-    refreshController.resetNoData();
-    refreshController.refreshCompleted();
   }
 
   void onLoading() async {
     if (!hasMore) {
-      refreshController.loadNoData();
       return;
     }
     page++;
     await getUsers();
     if (hasMore) {
-      refreshController.loadComplete();
+      // refreshController.loadComplete();
     } else {
-      refreshController.loadNoData();
+      // refreshController.loadNoData();
     }
   }
 }

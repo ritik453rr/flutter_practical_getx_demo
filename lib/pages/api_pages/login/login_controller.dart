@@ -20,8 +20,6 @@ class LoginController extends GetxController {
   final isPasswordVisible = false.obs;
   final emailError = RxnString();
   final passwordError = RxnString();
-  var count1 = 0;
-  var count2 = 0;
 
 
 
