@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:getx_demo/common/app_colors.dart';
-import 'package:getx_demo/common/app_storage.dart';
 import 'package:getx_demo/language/app_language.dart';
 import 'package:getx_demo/routing/app_pages.dart';
 import 'global.dart';
@@ -11,7 +10,7 @@ import 'routing/app_routes.dart';
 void main() async {
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
-  Global.setSafeArea();
+  AppConstants.setSafeArea();
   runApp(const MyApp());
 }
 
@@ -28,7 +27,11 @@ class MyApp extends StatelessWidget {
       locale: const Locale('en', 'US'),
       initialRoute: AppRoutes.home,
       theme: ThemeData(
-        scaffoldBackgroundColor: AppColors.white,
+        scaffoldBackgroundColor: AppColors.bgColor,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: AppColors.bgColor,
+          surfaceTintColor: AppColors.bgColor,
+        ),
         splashColor: Colors.transparent,
         splashFactory: NoSplash.splashFactory,
         highlightColor: Colors.transparent,

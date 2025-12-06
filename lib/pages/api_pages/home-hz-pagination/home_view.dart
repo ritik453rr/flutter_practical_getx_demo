@@ -1,9 +1,8 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_demo/common/app_storage.dart';
 import 'package:getx_demo/common/common_ui.dart';
-import 'package:getx_demo/routing/app_routes.dart';
+import 'package:getx_demo/extension/app_extension.dart';
+import 'package:getx_demo/global.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'home_controller.dart';
 
@@ -14,18 +13,33 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("home"),
-        surfaceTintColor: Colors.white,
-        backgroundColor: Colors.white,
+        actionsPadding: const EdgeInsets.only(right: 12),
         actions: [
-          IconButton(
-              onPressed: () {
-                AppStorage.setLogin(false);
-                Get.offAllNamed(AppRoutes.login);
-              },
-              icon: const Icon(Icons.logout))
+          Obx(
+            () => Text(
+                "${controller.fileDownloadProgress.value.toStringAsFixed(2)}%"),
+          ),
+          10.w,
+          CommonUi.tapEffect(
+            onTap: () {
+              controller.getDownloadDir();
+            },
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text("Download"),
+            ),
+          ),
+          15.w,
+          CommonUi.tapEffect(
+            borderRadius: 50,
+            onTap: () {},
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(Icons.logout),
+            ),
+          )
         ],
       ),
       body: SafeArea(
@@ -45,7 +59,7 @@ class HomeView extends GetView<HomeController> {
                       controller: controller.vtScrollCtr,
 
                       children: [
-                        // Horizontal Pagination ListView
+                        /// Horizontal Pagination ListView
 
                         // SizedBox(
                         //   height: 100,
@@ -82,7 +96,7 @@ class HomeView extends GetView<HomeController> {
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             padding: const EdgeInsets.only(
-                                top: 20, left: 20, right: 20, bottom: 30),
+                                top: 30, left: 20, right: 20, bottom: 30),
                             itemCount: controller.userLoading.value
                                 ? 10
                                 : controller.users.length +
@@ -107,18 +121,31 @@ class HomeView extends GetView<HomeController> {
                                         ),
                                       ),
                                     )
-                                  : SizedBox(
-                                      height: 200,
-                                      child: Card(
-                                        color: Colors.white,
-                                        child: ListTile(
-                                          title: Text(
-                                              "${controller.users[index].name}  ${index + 1}"),
-                                          subtitle: Text(
-                                              controller.users[index].email),
+                                  : Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 20),
+                                      child: CommonUi.tapEffect(
+                                        decoration: homeListItemDecoration(),
+                                        onTap: () {},
+                                        child: Container(
+                                          height: 200,
+                                          padding: const EdgeInsets.all(10),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "${controller.users[index].name}  ${index + 1}",
+                                                style: const TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              Text(
+                                                  controller.users[index].email)
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    );
+                                      ));
                             },
                           ),
                         ),
@@ -128,6 +155,26 @@ class HomeView extends GetView<HomeController> {
           },
         ),
       ),
+    );
+  }
+
+  ///
+  BoxDecoration homeListItemDecoration() {
+    return BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(12),
+      border: Border.all(
+        color: Colors.black12,
+        width: 0.5,
+      ),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black12.withValues(alpha: 0.08),
+          blurRadius: 12,
+          spreadRadius: 1,
+          offset: const Offset(0, 3),
+        ),
+      ],
     );
   }
 }

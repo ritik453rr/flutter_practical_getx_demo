@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,7 +9,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // Utility class containing global constants and helper methods
-class Global {
+class AppConstants {
   static const double hzPadding = 20.0;
   static const double bottomSpace = 20;
   static const tempPdfUrl =
@@ -85,11 +87,28 @@ class Global {
   static void setSafeArea({bool isDark = false}) {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        systemNavigationBarColor: isDark ? AppColors.black : AppColors.white,
+        systemNavigationBarColor: isDark ? AppColors.black : AppColors.bgColor,
         systemNavigationBarIconBrightness:
             isDark ? Brightness.light : Brightness.dark,
         statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
       ),
     );
   }
+
+/// Retrieves the Android SDK version
+static Future<int> androidSdkVersion()async{
+  
+  try {
+   final int sdk = int.parse(
+        (await Process.run('getprop', ['ro.build.version.sdk']))
+            .stdout
+            .toString()
+            .trim());
+            return sdk;
+  } catch (_) {
+       // fallback to assume Android 11+
+        return 30;
+  }
+}
+
 }

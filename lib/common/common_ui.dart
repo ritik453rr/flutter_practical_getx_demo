@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/app_fonts.dart';
+import 'package:getx_demo/global.dart';
 
 class CommonUi {
   /// Set PNG image
@@ -62,23 +63,47 @@ class CommonUi {
     return Get.snackbar(title, message, snackPosition: SnackPosition.BOTTOM);
   }
 
-  /// Emty state Widget
-  static emptyState() {
-    return SizedBox(
-        height: Get.height,
-        child: const CustomScrollView(
-          slivers: [
-            SliverFillRemaining(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    "Empty State",
-                  ),
-                ],
+  /// EMPTY STATE WIDGET
+  static Widget emptyState({bool scroll = true}) {
+    return CustomScrollView(
+      physics: scroll
+          ? const AlwaysScrollableScrollPhysics()
+          : const NeverScrollableScrollPhysics(),
+      slivers: [
+        SliverFillRemaining(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text(
+                "Empty State",
               ),
-            ),
-          ],
-        ));
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// ON TAP EFFECT WIDGET.
+  static Widget tapEffect({
+    BoxDecoration? decoration,
+    double borderRadius = 12,
+    void Function()? onTap,
+    required Widget child,
+  }) {
+    return Ink(
+      decoration: decoration,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(borderRadius),
+        splashColor: Colors.grey.withOpacity(0.2),
+        splashFactory: InkSparkle.splashFactory,
+        onTap: () {
+          AppConstants.hapticFeedBack();
+          onTap?.call();
+        },
+        child: child,
+      ),
+      
+    );
   }
 }

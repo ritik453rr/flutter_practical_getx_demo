@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
- /// Bg Colors
+  /// Bg Colors
+  static const bgColor = Color(0xFFF8F9FA);
   static const Color softGreen = Color.fromRGBO(234, 250, 241, 1.0);
-
-  ///
   static const Color white = Color.fromRGBO(255, 255, 255, 1.0);
   static const Color black = Color.fromRGBO(0, 0, 0, 1.0);
   static const Color darkPurple = Color.fromRGBO(8, 7, 14, 1.0);
@@ -23,7 +22,4 @@ class AppColors {
   /// Default Colors
   static const Color blue = Colors.blue;
   static const Color transparent = Colors.transparent;
-
-  static Color shimmerBaseColor = Colors.grey.shade300;
-  static Color shimmerHighlightColor = Colors.grey.shade100;
-} 
+}

@@ -38,8 +38,8 @@ class SlidePanelView extends StatelessWidget {
               builder:
                   (BuildContext context, ScrollController scrollController) {
                 return Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: Global.hzPadding),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppConstants.hzPadding),
                   decoration: const BoxDecoration(
                     color: AppColors.white,
                     borderRadius:
@@ -164,7 +164,7 @@ class SlidePanelView extends StatelessWidget {
                         }),
                       ),
                       const SliverToBoxAdapter(
-                        child: SizedBox(height: Global.bottomSpace),
+                        child: SizedBox(height: AppConstants.bottomSpace),
                       ),
                     ],
                   ),

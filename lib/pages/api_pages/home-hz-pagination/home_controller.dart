@@ -1,8 +1,14 @@
+import 'dart:convert';
+import 'dart:io';
+import 'package:dio/dio.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_demo/api_service/api_models/response_model.dart';
-import 'package:getx_demo/api_service/api_models/user_model.dart';
-import 'package:getx_demo/api_service/api_service.dart';
+import 'package:getx_demo/global.dart';
+import 'package:getx_demo/network/model/response_model.dart';
+import 'package:getx_demo/network/api_service.dart';
+import 'package:getx_demo/pages/api_pages/home-hz-pagination/model/user_model.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 /// HomeController manages the state and business logic for the home page
 class HomeController extends GetxController {
@@ -15,6 +21,8 @@ class HomeController extends GetxController {
   final RxBool userLoading = true.obs;
   var loadMore = false.obs;
   var hasMore = false;
+  var fileDownloadProgress = 0.0.obs;
+  String? downloadDir;
 
   /// Lists
   var users = <UserModel>[].obs;
@@ -49,15 +57,14 @@ class HomeController extends GetxController {
   Future<void> getUsers({bool init = false}) async {
     ResponseModel resModel = await ApiService().getRequest(
       url: "https://jsonplaceholder.typicode.com/users",
-      model: userModelFromJson,
     );
 
     if (resModel.status) {
       hasMore = page < 5;
       if (init) {
-        users.value = resModel.data;
+        users.value = userModelFromJson(jsonEncode(resModel.data));
       } else {
-        users.addAll(resModel.data);
+        users.addAll(userModelFromJson(jsonEncode(resModel.data)));
       }
       userLoading.value = false;
     } else {
@@ -94,4 +101,40 @@ class HomeController extends GetxController {
       // refreshController.loadNoData();
     }
   }
+
+  /// Checks storage permission and initiates file download
+  void getDownloadDir(
+      {String url =
+          "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"}) async {
+    if (downloadDir == null) {
+      downloadDir = await FilePicker.platform.getDirectoryPath(
+        dialogTitle: "Select Download Folder",
+      );
+      if (downloadDir != null) {
+        downloadFile(url: url, path: downloadDir!);
+      }
+    } else {
+      downloadFile(url: url, path: downloadDir!);
+    }
+  }
+
+  /// Downloads a file from the given URL
+  Future<void> downloadFile({required String url, required String path}) async {
+    final ResponseModel resModel = await ApiService().downloadMedia(
+      url: url,
+      dirPath: path,
+      onReceiveProgress: (received, total) {
+        if (total != -1) {
+          fileDownloadProgress.value = (received / total) * 100;
+        }
+      },
+    );
+
+    if (resModel.status) {
+      print(resModel.message);
+    } else {
+      print("False");
+    }
+  }
+
 }

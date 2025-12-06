@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
-import 'package:getx_demo/pages/api_pages/home-hz-pagination/home_binding.dart';
+import 'package:getx_demo/pages/api_pages/home-hz-pagination/home_controller.dart';
 import 'package:getx_demo/pages/api_pages/home-hz-pagination/home_view.dart';
-import 'package:getx_demo/pages/api_pages/login/login_binding.dart';
-import 'package:getx_demo/pages/api_pages/login/login_view.dart';
 import 'package:getx_demo/pages/google_map/google_map_binding.dart';
 import 'package:getx_demo/pages/google_map/google_map_view.dart';
 import 'package:getx_demo/pages/life_cycle/life_cycle_binding.dart';
@@ -28,12 +26,9 @@ class AppPages {
     GetPage(
       name: AppRoutes.home,
       page: () => const HomeView(),
-      binding: HomeBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.login,
-      page: () => LoginView(),
-      binding: LoginBinding(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => HomeController());
+      }),
     ),
     GetPage(
       name: AppRoutes.appWeb,
@@ -56,7 +51,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.splash,
-      page: () =>SplashView(),
+      page: () => SplashView(),
       binding: SplashBinding(),
     )
   ];
