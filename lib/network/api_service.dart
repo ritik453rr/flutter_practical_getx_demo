@@ -23,8 +23,8 @@ class ApiService {
       },
     ),
   );
-
-  // ---- GET Request ----
+  
+  // ----  G ET Request ----
   Future<ResponseModel> getRequest({
     required String url,
   }) async {

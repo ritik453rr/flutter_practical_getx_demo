@@ -52,6 +52,7 @@ dependencies:
   dio: ^5.9.0
   path_provider: ^2.1.5
   file_picker: ^10.3.7
+  flutter_contacts: ^1.1.9+2
   
 dev_dependencies:
   flutter_test:

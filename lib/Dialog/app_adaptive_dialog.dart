@@ -8,8 +8,8 @@ import 'package:getx_demo/common/common_ui.dart';
 Future appAdaptiveDialog(
     {String? title,
     required String content,
-    String firstBtnText = "ok",
-    String secondBtnText = "",
+    String firstBtnText = "btn1",
+    String secondBtnText = "btn2",
     void Function()? onTapSecondBtn
     }) {
   return showAdaptiveDialog(

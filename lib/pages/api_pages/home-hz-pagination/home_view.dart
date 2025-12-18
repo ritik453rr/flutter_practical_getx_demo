@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:getx_demo/common/common_ui.dart';
 import 'package:getx_demo/extension/app_extension.dart';
 import 'package:getx_demo/global.dart';
+import 'package:getx_demo/routing/app_routes.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'home_controller.dart';
 
@@ -17,21 +18,11 @@ class HomeView extends GetView<HomeController> {
         title: const Text("home"),
         actionsPadding: const EdgeInsets.only(right: 12),
         actions: [
-          Obx(
-            () => Text(
-                "${controller.fileDownloadProgress.value.toStringAsFixed(2)}%"),
-          ),
-          10.w,
           CommonUi.tapEffect(
-            onTap: () {
-              controller.getDownloadDir();
-            },
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text("Download"),
-            ),
-          ),
-          15.w,
+              onTap: () {
+                Get.toNamed(AppRoutes.appContact);
+              },
+              child: Text("Contacts")),
           CommonUi.tapEffect(
             borderRadius: 50,
             onTap: () {},

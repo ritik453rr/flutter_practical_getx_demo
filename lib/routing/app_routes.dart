@@ -7,4 +7,6 @@ class AppRoutes {
   static const slidePanel = "/slidePanel";
   static const lifeCycle = "/lifeCycle";
   static const googleMap = '/googleMap';
+  static const downloadFile = '/downloadFile';
+  static const appContact = '/appContact';
 }

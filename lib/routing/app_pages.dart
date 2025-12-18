@@ -1,4 +1,8 @@
 import 'package:get/get.dart';
+import 'package:getx_demo/pages/api_pages/contact/app_contact_controller.dart';
+import 'package:getx_demo/pages/api_pages/contact/app_contact_view.dart';
+import 'package:getx_demo/pages/api_pages/download_file/download_file_controller.dart';
+import 'package:getx_demo/pages/api_pages/download_file/download_file_view.dart';
 import 'package:getx_demo/pages/api_pages/home-hz-pagination/home_controller.dart';
 import 'package:getx_demo/pages/api_pages/home-hz-pagination/home_view.dart';
 import 'package:getx_demo/pages/google_map/google_map_binding.dart';
@@ -53,6 +57,23 @@ class AppPages {
       name: AppRoutes.splash,
       page: () => SplashView(),
       binding: SplashBinding(),
-    )
+    ),
+    GetPage(
+        name: AppRoutes.downloadFile,
+        page: () => DownloadFileView(),
+        binding: BindingsBuilder(() {
+          Get.lazyPut(
+            () => DonwloadFileController(),
+          );
+        }))
+        ,
+        GetPage(
+        name: AppRoutes.appContact,
+        page: () => AppContactView(),
+        binding: BindingsBuilder(() {
+          Get.lazyPut(
+            () => AppContactController(),
+          );
+        }))
   ];
 }

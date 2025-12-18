@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/Dialog/app_adaptive_dialog.dart';
 import 'package:getx_demo/global.dart';
 import 'package:getx_demo/network/model/response_model.dart';
 import 'package:getx_demo/network/api_service.dart';
@@ -21,11 +23,13 @@ class HomeController extends GetxController {
   final RxBool userLoading = true.obs;
   var loadMore = false.obs;
   var hasMore = false;
-  var fileDownloadProgress = 0.0.obs;
-  String? downloadDir;
+
+  var obs1 = 0.obs;
+  var obs2 = 0.obs;
 
   /// Lists
   var users = <UserModel>[].obs;
+
 
   @override
   void onInit() {
@@ -102,39 +106,6 @@ class HomeController extends GetxController {
     }
   }
 
-  /// Checks storage permission and initiates file download
-  void getDownloadDir(
-      {String url =
-          "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"}) async {
-    if (downloadDir == null) {
-      downloadDir = await FilePicker.platform.getDirectoryPath(
-        dialogTitle: "Select Download Folder",
-      );
-      if (downloadDir != null) {
-        downloadFile(url: url, path: downloadDir!);
-      }
-    } else {
-      downloadFile(url: url, path: downloadDir!);
-    }
-  }
 
-  /// Downloads a file from the given URL
-  Future<void> downloadFile({required String url, required String path}) async {
-    final ResponseModel resModel = await ApiService().downloadMedia(
-      url: url,
-      dirPath: path,
-      onReceiveProgress: (received, total) {
-        if (total != -1) {
-          fileDownloadProgress.value = (received / total) * 100;
-        }
-      },
-    );
-
-    if (resModel.status) {
-      print(resModel.message);
-    } else {
-      print("False");
-    }
-  }
-
+  
 }
