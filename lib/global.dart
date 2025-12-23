@@ -95,20 +95,66 @@ class AppConstants {
     );
   }
 
-/// Retrieves the Android SDK version
-static Future<int> androidSdkVersion()async{
-  
-  try {
-   final int sdk = int.parse(
-        (await Process.run('getprop', ['ro.build.version.sdk']))
-            .stdout
-            .toString()
-            .trim());
-            return sdk;
-  } catch (_) {
-       // fallback to assume Android 11+
-        return 30;
+  /// Retrieves the Android SDK version
+  static Future<int> androidSdkVersion() async {
+    try {
+      final int sdk = int.parse(
+          (await Process.run('getprop', ['ro.build.version.sdk']))
+              .stdout
+              .toString()
+              .trim());
+      return sdk;
+    } catch (_) {
+      // fallback to assume Android 11+
+      return 30;
+    }
   }
-}
 
+// Returns the uppercase initials from a full name (first letter of first and last words).
+  static String getInitials(String name) {
+    try {
+      final clean = name.replaceAll(RegExp(r'[\uD800-\uDFFF]'), '').trim();
+
+      if (clean.isEmpty) return "";
+
+      final parts =
+          clean.split(RegExp(r'\s+')).where((e) => e.isNotEmpty).toList();
+
+      // 🚫 nothing usable
+      if (parts.isEmpty) return "";
+
+      // length == 1 but empty/space-only
+      if (parts.length == 1 && parts.first.isEmpty) {
+        return "";
+      }
+
+      // single word
+      if (parts.length == 1) {
+        return parts.first.characters.first.toUpperCase();
+      }
+
+      // multi-word
+      return (parts.first.characters.first + parts.last.characters.first)
+          .toUpperCase();
+    } catch (e) {
+      print(e.toString());
+      return "";
+    }
+  }
+
+  /// method to validate us mobile number.
+  static bool validateMobile(
+      {required String value, required RxnString errorText}) {
+    var mob = value.replaceAll("-", "");
+    if (mob.isEmpty) {
+      errorText.value = "Enter mobile number";
+      return false;
+    }
+    if (mob.length < 10) {
+      errorText.value = "Mobile number not valid";
+      return false;
+    }
+    errorText.value = null;
+    return true;
+  }
 }

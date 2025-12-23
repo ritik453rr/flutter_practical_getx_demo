@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_contacts/contact.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:getx_demo/Dialog/app_adaptive_dialog.dart';
+import 'package:getx_demo/bottomsheet/contact_bottomsheet.dart';
 import 'package:getx_demo/pages/api_pages/contact/model/contact_model.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -11,16 +13,15 @@ class AppContactController extends GetxController {
   var contacts = <ContactModel>[].obs;
 
   /// Selected contacts
-  var selectedContacts = <ContactModel>{}.obs;
   var filteredContacts = <ContactModel>[].obs;
-  var searchQuery = ''.obs;
+  // var searchQuery = ''.obs;
   final letterIndexMap = <String, int>{}.obs;
 
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    ever(searchQuery, (_) => applySearch());
+    // ever(searchQuery, (_) => applySearch());
   }
 
   void buildLetterIndex() {
@@ -37,33 +38,25 @@ class AppContactController extends GetxController {
     }
   }
 
-  void applySearch() {
-    if (searchQuery.value.isEmpty) {
+  void applySearch(String searchQuery) {
+    if (searchQuery.isEmpty) {
       filteredContacts.assignAll(contacts);
     } else {
       filteredContacts.assignAll(
         contacts.where((c) => c.contact.displayName
             .toLowerCase()
-            .contains(searchQuery.value.toLowerCase())),
+            .contains(searchQuery.toLowerCase())),
       );
     }
     buildLetterIndex();
   }
 
-  void toggleSelection(ContactModel c) {
-    selectedContacts.contains(c)
-        ? selectedContacts.remove(c)
-        : selectedContacts.add(c);
-  }
-
-  bool isSelected(Contact c) => selectedContacts.contains(c);
-
-  void ensureContactsPermission() async {
+  void ensureContactsPermission({isSelect = false}) async {
     final contactPermission = Permission.contacts.status;
     if (await contactPermission.isDenied) {
       await Permission.contacts.request();
       if (await contactPermission.isGranted) {
-        loadContacts();
+        loadContacts(isSelected: isSelect);
       }
     } else if (await contactPermission.isPermanentlyDenied) {
       appAdaptiveDialog(
@@ -75,25 +68,32 @@ class AppContactController extends GetxController {
             Get.back();
           });
     } else {
-      loadContacts();
+      loadContacts(isSelected: isSelect);
     }
   }
 
-  Future<void> loadContacts() async {
-    isLoading.value = true;
-    final List<Contact> conts = await FlutterContacts.getContacts(
-      withProperties: true,
-      withPhoto: true,
-      withThumbnail: true,
-      sorted: true,
-    );
-
-    contacts.value = conts.map((e) {
-      return ContactModel(contact: e);
-    }).toList();
-
-    filteredContacts.assignAll( contacts);
-    buildLetterIndex();
-    isLoading.value = false;
+  Future<void> loadContacts({isSelected = false}) async {
+    try {
+      if (isSelected) {
+        showContactSheet(
+          filteredContacts: filteredContacts,
+          loadingContact: isLoading,
+          onChangedSearch: (value) => applySearch(value.trim()),
+        );
+      } else {}
+      isLoading.value = true;
+      final List<Contact> conts = await FlutterContacts.getContacts(
+        withProperties: true,
+        withPhoto: true,
+        withThumbnail: true,
+        sorted: true,
+      );
+      contacts.value = ContactModel.fromContactList(conts);
+      filteredContacts.assignAll(contacts);
+      buildLetterIndex();
+    } catch (e) {
+    } finally {
+      isLoading.value = false;
+    }
   }
 }

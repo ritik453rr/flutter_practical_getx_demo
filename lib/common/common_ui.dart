@@ -64,7 +64,7 @@ class CommonUi {
   }
 
   /// EMPTY STATE WIDGET
-  static Widget emptyState({bool scroll = true}) {
+  static Widget emptyState({bool scroll = true,String title="Empty"}) {
     return CustomScrollView(
       physics: scroll
           ? const AlwaysScrollableScrollPhysics()
@@ -73,9 +73,9 @@ class CommonUi {
         SliverFillRemaining(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children:  [
               Text(
-                "Empty State",
+                title,
               ),
             ],
           ),
