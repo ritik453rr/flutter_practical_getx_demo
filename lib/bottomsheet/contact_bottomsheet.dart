@@ -22,7 +22,11 @@ List<AlphabetListViewItemGroup> groupContacts(
     map.putIfAbsent(key, () => []);
 
     map[key]!.add(
-      ContactListItem(contact: contact), // 👈 widget
+      ContactListItem(
+        contact: contact,
+        isFirst: contact == contacts[0],
+        isLast: contact == contacts[contacts.length - 1],
+      ), // 👈 widget
     );
   }
 
@@ -40,7 +44,13 @@ List<AlphabetListViewItemGroup> groupContacts(
 
 class ContactListItem extends StatelessWidget {
   final ContactModel contact;
-  const ContactListItem({super.key, required this.contact});
+  final bool isFirst;
+  final bool isLast;
+  const ContactListItem(
+      {super.key,
+      required this.contact,
+      required this.isFirst,
+      required this.isLast});
   @override
   Widget build(BuildContext context) {
     final initials = AppConstants.getInitials(
@@ -48,7 +58,10 @@ class ContactListItem extends StatelessWidget {
     );
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 14),
+      padding: EdgeInsets.only(
+        bottom: isLast ? 20 : 14,
+        top: isFirst ? 20 : 0,
+      ),
       child: Row(
         children: [
           /// Selection
@@ -62,7 +75,7 @@ class ContactListItem extends StatelessWidget {
               () => Container(
                 height: 24,
                 width: 24,
-                margin: EdgeInsets.only(right: 12, left: 20),
+                margin: const EdgeInsets.only(right: 12, left: 20),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
@@ -185,19 +198,19 @@ Future<void> showContactSheet({
                         color: AppColors.white,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.15),
+                            color: Colors.black.withValues(alpha: 0.15),
                             blurRadius: 8,
                             spreadRadius: 1,
                             offset: const Offset(0, 4),
                           ),
                         ],
                       ),
-                      child: Icon(Icons.keyboard_arrow_left),
+                      child: const Icon(Icons.keyboard_arrow_left),
                     ),
                   ),
-                  Text(
+                  const Text(
                     "Contacts",
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -298,7 +311,7 @@ Future<void> showContactSheet({
                         },
                       ),
                       listOptions: const ListOptions(
-                        padding: EdgeInsets.only(top: 20, bottom: 20),
+                        // padding: EdgeInsets.only(top: 20, bottom: 20),
                         showSectionHeader: false,
                       )),
                 );
@@ -317,9 +330,9 @@ Future<void> showContactSheet({
                   color: const Color(0xFF1A73E8),
                   borderRadius: BorderRadius.circular(26),
                 ),
-                child: Text(
+                child: const Text(
                   "Continue",
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -342,9 +355,9 @@ Future<void> showContactSheet({
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(26),
                 ),
-                child: Text(
+                child: const Text(
                   "Later",
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.black,
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
