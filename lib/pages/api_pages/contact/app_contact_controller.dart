@@ -54,8 +54,8 @@ class AppContactController extends GetxController {
   void ensureContactsPermission({isSelect = false}) async {
     final contactPermission = Permission.contacts.status;
     if (await contactPermission.isDenied) {
-      await Permission.contacts.request();
-      if (await contactPermission.isGranted) {
+      final status = await Permission.contacts.request();
+      if (status.isGranted) {
         loadContacts(isSelected: isSelect);
       }
     } else if (await contactPermission.isPermanentlyDenied) {
@@ -80,7 +80,7 @@ class AppContactController extends GetxController {
           loadingContact: isLoading,
           onChangedSearch: (value) => applySearch(value.trim()),
         );
-      } else {}
+      }
       isLoading.value = true;
       final List<Contact> conts = await FlutterContacts.getContacts(
         withProperties: true,
@@ -92,6 +92,7 @@ class AppContactController extends GetxController {
       filteredContacts.assignAll(contacts);
       buildLetterIndex();
     } catch (e) {
+      print(e.toString());
     } finally {
       isLoading.value = false;
     }

@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/app_fonts.dart';
-import 'package:getx_demo/global.dart';
+import 'package:getx_demo/app_constants.dart';
 
 class CommonUi {
   /// Set PNG image

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/Dialog/app_adaptive_dialog.dart';
-import 'package:getx_demo/global.dart';
+import 'package:getx_demo/app_constants.dart';
 import 'package:getx_demo/network/model/response_model.dart';
 import 'package:getx_demo/network/api_service.dart';
 import 'package:getx_demo/pages/api_pages/home-hz-pagination/model/user_model.dart';

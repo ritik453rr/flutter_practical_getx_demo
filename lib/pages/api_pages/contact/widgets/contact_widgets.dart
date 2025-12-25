@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getx_demo/global.dart';
+import 'package:getx_demo/app_constants.dart';
 
 /// Builds a circular contact avatar displaying a profile image or fallback initials with a subtle shadow.
 Widget contactAvatar({required String name, ImageProvider? image}) {
@@ -25,7 +25,7 @@ Widget contactAvatar({required String name, ImageProvider? image}) {
     child: image == null
         ? Text(
           name,
-            // AppConstants.getInitials(name),
+          
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w600,

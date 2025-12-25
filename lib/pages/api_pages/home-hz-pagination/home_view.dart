@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/common_ui.dart';
 import 'package:getx_demo/extension/app_extension.dart';
-import 'package:getx_demo/global.dart';
+import 'package:getx_demo/app_constants.dart';
 import 'package:getx_demo/routing/app_routes.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'home_controller.dart';

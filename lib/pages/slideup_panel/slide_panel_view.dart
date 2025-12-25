@@ -5,7 +5,7 @@ import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/app_font_sizes.dart';
 import 'package:getx_demo/common/app_fonts.dart';
 import 'package:getx_demo/common/common_ui.dart';
-import 'package:getx_demo/global.dart';
+import 'package:getx_demo/app_constants.dart';
 import 'package:getx_demo/routing/app_routes.dart';
 
 class SlidePanelView extends StatelessWidget {
