@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_demo/pages/life_cycle/life_cycle_controller.dart';
+import 'package:getx_demo/features/life_cycle/life_cycle_controller.dart';
 import 'package:getx_demo/routing/app_routes.dart';
 
 class LifeCycleView extends StatelessWidget {

@@ -1,38 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/common_ui.dart';
-import 'package:getx_demo/extension/app_extension.dart';
-import 'package:getx_demo/app_constants.dart';
-import 'package:getx_demo/routing/app_routes.dart';
+import 'package:getx_demo/features/home/home_controller.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'home_controller.dart';
 
-/// HomeView is the main view of the home page
-class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
-
+/// UserListView is the main view of the user list page
+class UserListView extends StatelessWidget {
+  UserListView({super.key});
+  final controller = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("home"),
-        actionsPadding: const EdgeInsets.only(right: 12),
-        actions: [
-          CommonUi.tapEffect(
-              onTap: () {
-                Get.toNamed(AppRoutes.appContact);
-              },
-              child: Text("Contacts")),
-          CommonUi.tapEffect(
-            borderRadius: 50,
-            onTap: () {},
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.logout),
-            ),
-          )
-        ],
-      ),
       body: SafeArea(
         child: Obx(
           () {
@@ -115,8 +93,25 @@ class HomeView extends GetView<HomeController> {
                                   : Padding(
                                       padding:
                                           const EdgeInsets.only(bottom: 20),
-                                      child: CommonUi.tapEffect(
-                                        decoration: homeListItemDecoration(),
+                                      child: CommonUi.onTapEffect(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          border: Border.all(
+                                            color: Colors.black12,
+                                            width: 0.5,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black12
+                                                  .withValues(alpha: 0.08),
+                                              blurRadius: 12,
+                                              spreadRadius: 1,
+                                              offset: const Offset(0, 3),
+                                            ),
+                                          ],
+                                        ),
                                         onTap: () {},
                                         child: Container(
                                           height: 200,
@@ -146,26 +141,6 @@ class HomeView extends GetView<HomeController> {
           },
         ),
       ),
-    );
-  }
-
-  ///
-  BoxDecoration homeListItemDecoration() {
-    return BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(12),
-      border: Border.all(
-        color: Colors.black12,
-        width: 0.5,
-      ),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black12.withValues(alpha: 0.08),
-          blurRadius: 12,
-          spreadRadius: 1,
-          offset: const Offset(0, 3),
-        ),
-      ],
     );
   }
 }

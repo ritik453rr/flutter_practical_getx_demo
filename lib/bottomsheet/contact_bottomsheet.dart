@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_contacts/contact.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/common_ui.dart';
 import 'package:getx_demo/extension/app_extension.dart';
 import 'package:getx_demo/app_constants.dart';
-import 'package:getx_demo/pages/api_pages/contact/model/contact_model.dart';
-import 'package:getx_demo/pages/api_pages/contact/widgets/contact_widgets.dart';
+import 'package:getx_demo/features/contact/widgets/contact_widgets.dart';
 import 'package:alphabet_list_view/alphabet_list_view.dart';
 
+/// Groups contacts by the first letter of their display name.
 List<AlphabetListViewItemGroup> groupContacts(
-  List<ContactModel> contacts,
+  List<Contact> contacts,
 ) {
   final Map<String, List<Widget>> map = {};
-
   for (final contact in contacts) {
-    final name = contact.contact.displayName.trim();
-    if (name.isEmpty) continue;
+    final name = contact.displayName.trim();
+    final number = contact.phones.isNotEmpty
+        ? contact.phones.first.number.trim(): '';/// added to avoid empty number
+    if (name.isEmpty || number.isEmpty) continue;
 
     final key = name[0].toUpperCase();
 
@@ -26,7 +28,7 @@ List<AlphabetListViewItemGroup> groupContacts(
         contact: contact,
         isFirst: contact == contacts[0],
         isLast: contact == contacts[contacts.length - 1],
-      ), // 👈 widget
+      ), 
     );
   }
 
@@ -42,8 +44,9 @@ List<AlphabetListViewItemGroup> groupContacts(
       .toList();
 }
 
+/// A widget that represents a single contact item in the contact list.
 class ContactListItem extends StatelessWidget {
-  final ContactModel contact;
+  final Contact contact;
   final bool isFirst;
   final bool isLast;
   const ContactListItem(
@@ -54,7 +57,7 @@ class ContactListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final initials = AppConstants.getInitials(
-      contact.contact.displayName,
+      contact.displayName,
     );
 
     return Padding(
@@ -106,9 +109,9 @@ class ContactListItem extends StatelessWidget {
             width: 40,
             child: contactAvatar(
               name: initials,
-              image: contact.contact.photoOrThumbnail != null
+              image: contact.photoOrThumbnail != null
                   ? MemoryImage(
-                      contact.contact.photoOrThumbnail!,
+                      contact.photoOrThumbnail!,
                     )
                   : null,
             ),
@@ -118,7 +121,7 @@ class ContactListItem extends StatelessWidget {
           /// Name
           Expanded(
             child: Text(
-              contact.contact.displayName,
+              contact.displayName,
               style: const TextStyle(fontSize: 16),
             ),
           ),
@@ -129,7 +132,7 @@ class ContactListItem extends StatelessWidget {
 }
 
 Future<void> showContactSheet({
-  required RxList<ContactModel> filteredContacts,
+  required RxList<Contact> filteredContacts,
   void Function(String)? onChangedSearch,
   required RxBool loadingContact,
   void Function()? onTapContinue,
@@ -153,17 +156,6 @@ Future<void> showContactSheet({
         ),
         child: Column(
           children: [
-            /// Drag Handle
-            // Container(
-            //   margin: const EdgeInsets.symmetric(vertical: 10),
-            //   width: 40,
-            //   height: 4,
-            //   decoration: BoxDecoration(
-            //     color: Colors.grey.shade300,
-            //     borderRadius: BorderRadius.circular(4),
-            //   ),
-            // ),
-
             10.h,
 
             /// Selected Count

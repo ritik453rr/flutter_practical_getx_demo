@@ -64,7 +64,7 @@ class CommonUi {
   }
 
   /// EMPTY STATE WIDGET
-  static Widget emptyState({bool scroll = true,String title="Empty"}) {
+  static Widget emptyState({bool scroll = true, String title = "Empty"}) {
     return CustomScrollView(
       physics: scroll
           ? const AlwaysScrollableScrollPhysics()
@@ -73,7 +73,7 @@ class CommonUi {
         SliverFillRemaining(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children:  [
+            children: [
               Text(
                 title,
               ),
@@ -85,7 +85,7 @@ class CommonUi {
   }
 
   /// ON TAP EFFECT WIDGET.
-  static Widget tapEffect({
+  static Widget onTapEffect({
     BoxDecoration? decoration,
     double borderRadius = 12,
     void Function()? onTap,
@@ -103,7 +103,25 @@ class CommonUi {
         },
         child: child,
       ),
-      
     );
+  }
+
+  /// APP BUTTON WIDGET
+  static Widget appButton({required String title,void Function()? onTap,double width=0,double height=0}) {
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            minimumSize: Size(width, height),
+            backgroundColor: Colors.blue,
+            visualDensity: VisualDensity.compact,
+            overlayColor: Colors.deepPurpleAccent,
+            splashFactory: InkSparkle.splashFactory),
+        onPressed: () {
+          onTap?.call();
+        },
+        child: Text(
+          title,
+          style:const TextStyle(fontSize: 16, color: Colors.white),
+        ));
   }
 }

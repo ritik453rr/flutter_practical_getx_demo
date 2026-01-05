@@ -9,7 +9,7 @@ import 'package:getx_demo/Dialog/app_adaptive_dialog.dart';
 import 'package:getx_demo/app_constants.dart';
 import 'package:getx_demo/network/model/response_model.dart';
 import 'package:getx_demo/network/api_service.dart';
-import 'package:getx_demo/pages/api_pages/home-hz-pagination/model/user_model.dart';
+import 'package:getx_demo/features/home/model/user_model.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 /// HomeController manages the state and business logic for the home page

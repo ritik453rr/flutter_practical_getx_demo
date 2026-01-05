@@ -1,21 +1,22 @@
 import 'package:get/get.dart';
-import 'package:getx_demo/pages/api_pages/contact/app_contact_controller.dart';
-import 'package:getx_demo/pages/api_pages/contact/app_contact_view.dart';
-import 'package:getx_demo/pages/api_pages/download_file/download_file_controller.dart';
-import 'package:getx_demo/pages/api_pages/download_file/download_file_view.dart';
-import 'package:getx_demo/pages/api_pages/home-hz-pagination/home_controller.dart';
-import 'package:getx_demo/pages/api_pages/home-hz-pagination/home_view.dart';
-import 'package:getx_demo/pages/google_map/google_map_binding.dart';
-import 'package:getx_demo/pages/google_map/google_map_view.dart';
-import 'package:getx_demo/pages/life_cycle/life_cycle_binding.dart';
-import 'package:getx_demo/pages/life_cycle/life_cycle_view.dart';
-import 'package:getx_demo/pages/slideup_panel/slide_panel_view.dart';
-import 'package:getx_demo/pages/splash/splash_binding.dart';
-import 'package:getx_demo/pages/splash/splash_view.dart';
-import 'package:getx_demo/pages/stream_builder/stream_builder_binding.dart';
-import 'package:getx_demo/pages/stream_builder/stream_builder_view.dart';
-import 'package:getx_demo/pages/web_view/app_web_binding.dart';
-import 'package:getx_demo/pages/web_view/app_web_view.dart';
+import 'package:getx_demo/features/contact/app_contact_controller.dart';
+import 'package:getx_demo/features/contact/app_contact_view.dart';
+import 'package:getx_demo/features/download_file/download_file_controller.dart';
+import 'package:getx_demo/features/download_file/download_file_view.dart';
+import 'package:getx_demo/features/home/home_controller.dart';
+import 'package:getx_demo/features/home/view/home_view.dart';
+import 'package:getx_demo/features/google_map/google_map_binding.dart';
+import 'package:getx_demo/features/google_map/google_map_view.dart';
+import 'package:getx_demo/features/home/view/user_list_view.dart';
+import 'package:getx_demo/features/life_cycle/life_cycle_binding.dart';
+import 'package:getx_demo/features/life_cycle/life_cycle_view.dart';
+import 'package:getx_demo/features/slideup_panel/slide_panel_view.dart';
+import 'package:getx_demo/features/splash/splash_binding.dart';
+import 'package:getx_demo/features/splash/splash_view.dart';
+import 'package:getx_demo/features/stream_builder/stream_builder_binding.dart';
+import 'package:getx_demo/features/stream_builder/stream_builder_view.dart';
+import 'package:getx_demo/features/web_view/app_web_binding.dart';
+import 'package:getx_demo/features/web_view/app_web_view.dart';
 import 'package:getx_demo/routing/app_routes.dart';
 
 // Defines the application's page routes and their corresponding bindings using GetX
@@ -29,7 +30,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.home,
-      page: () => const HomeView(),
+      page: () =>  HomeView(),
       binding: BindingsBuilder(() {
         Get.lazyPut(() => HomeController());
       }),
@@ -65,15 +66,18 @@ class AppPages {
           Get.lazyPut(
             () => DonwloadFileController(),
           );
-        }))
-        ,
-        GetPage(
+        })),
+    GetPage(
         name: AppRoutes.appContact,
         page: () => AppContactView(),
         binding: BindingsBuilder(() {
           Get.lazyPut(
             () => AppContactController(),
           );
-        }))
+        })),
+    GetPage(
+      name: AppRoutes.userList,
+      page: () => UserListView(),
+    ),
   ];
 }

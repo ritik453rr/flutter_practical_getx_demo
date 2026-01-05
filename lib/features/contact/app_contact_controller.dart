@@ -1,62 +1,39 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_contacts/contact.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:getx_demo/Dialog/app_adaptive_dialog.dart';
 import 'package:getx_demo/bottomsheet/contact_bottomsheet.dart';
-import 'package:getx_demo/pages/api_pages/contact/model/contact_model.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class AppContactController extends GetxController {
   var isLoading = false.obs;
-  var contacts = <ContactModel>[].obs;
-
-  /// Selected contacts
-  var filteredContacts = <ContactModel>[].obs;
-  // var searchQuery = ''.obs;
+  var deviceAllContacts = <Contact>[].obs;
+  var deviceFilteredContacts = <Contact>[].obs;
   final letterIndexMap = <String, int>{}.obs;
 
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-    // ever(searchQuery, (_) => applySearch());
-  }
 
-  void buildLetterIndex() {
-    letterIndexMap.clear();
-
-    for (int i = 0; i < filteredContacts.length; i++) {
-      final name = filteredContacts[i].contact.displayName;
-      if (name.isEmpty) continue;
-
-      final letter = name[0].toUpperCase();
-      if (!letterIndexMap.containsKey(letter)) {
-        letterIndexMap[letter] = i;
-      }
-    }
-  }
-
+/// Filters contacts based on the search query.
   void applySearch(String searchQuery) {
     if (searchQuery.isEmpty) {
-      filteredContacts.assignAll(contacts);
+      deviceFilteredContacts.assignAll(deviceAllContacts);
     } else {
-      filteredContacts.assignAll(
-        contacts.where((c) => c.contact.displayName
+      deviceFilteredContacts.assignAll(
+        deviceAllContacts.where((c) => c.displayName
             .toLowerCase()
             .contains(searchQuery.toLowerCase())),
       );
     }
-    buildLetterIndex();
+  
   }
 
+/// Ensures that the app has permission to access contacts.
   void ensureContactsPermission({isSelect = false}) async {
     final contactPermission = Permission.contacts.status;
     if (await contactPermission.isDenied) {
       final status = await Permission.contacts.request();
       if (status.isGranted) {
-        loadContacts(isSelected: isSelect);
+        loadDeviceContacts(isSelected: isSelect);
       }
     } else if (await contactPermission.isPermanentlyDenied) {
       appAdaptiveDialog(
@@ -68,15 +45,16 @@ class AppContactController extends GetxController {
             Get.back();
           });
     } else {
-      loadContacts(isSelected: isSelect);
+      loadDeviceContacts(isSelected: isSelect);
     }
   }
 
-  Future<void> loadContacts({isSelected = false}) async {
+/// Loads contacts from the device and optionally shows the contact selection sheet.
+  Future<void> loadDeviceContacts({isSelected = false}) async {
     try {
       if (isSelected) {
         showContactSheet(
-          filteredContacts: filteredContacts,
+          filteredContacts: deviceFilteredContacts,
           loadingContact: isLoading,
           onChangedSearch: (value) => applySearch(value.trim()),
         );
@@ -88,9 +66,9 @@ class AppContactController extends GetxController {
         withThumbnail: true,
         sorted: true,
       );
-      contacts.value = ContactModel.fromContactList(conts);
-      filteredContacts.assignAll(contacts);
-      buildLetterIndex();
+      deviceAllContacts.value= conts;
+      deviceFilteredContacts.assignAll(deviceAllContacts);
+      
     } catch (e) {
       print(e.toString());
     } finally {

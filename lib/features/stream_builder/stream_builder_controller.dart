@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_demo/pages/stream_builder/stream_socket.dart';
+import 'package:getx_demo/features/stream_builder/stream_socket.dart';
 
 class StreamBuilderController extends GetxController {
   var msgController = TextEditingController();

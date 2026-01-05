@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/common_ui.dart';
 import 'package:getx_demo/extension/app_extension.dart';
-import 'package:getx_demo/pages/api_pages/download_file/download_file_controller.dart';
+import 'package:getx_demo/features/download_file/download_file_controller.dart';
 
 class DownloadFileView extends StatelessWidget {
   DownloadFileView({super.key});
@@ -17,7 +17,7 @@ class DownloadFileView extends StatelessWidget {
                 "${controller.fileDownloadProgress.value.toStringAsFixed(2)}%"),
           ),
           10.w,
-          CommonUi.tapEffect(
+          CommonUi.onTapEffect(
             onTap: () {
               controller.getDownloadDir();
             },

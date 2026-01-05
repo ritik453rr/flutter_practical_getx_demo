@@ -9,4 +9,5 @@ class AppRoutes {
   static const googleMap = '/googleMap';
   static const downloadFile = '/downloadFile';
   static const appContact = '/appContact';
+  static const userList = '/userList';
 }
