@@ -10,4 +10,5 @@ class AppRoutes {
   static const downloadFile = '/downloadFile';
   static const appContact = '/appContact';
   static const userList = '/userList';
+  static const contactAvatar='/contactAvatar';
 }

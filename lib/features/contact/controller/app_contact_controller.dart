@@ -4,30 +4,27 @@ import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:getx_demo/Dialog/app_adaptive_dialog.dart';
 import 'package:getx_demo/bottomsheet/contact_bottomsheet.dart';
+import 'package:getx_demo/routing/app_routes.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class AppContactController extends GetxController {
-  var isLoading = false.obs;
+  var isLoadingDeviceContacts = false.obs;
   var deviceAllContacts = <Contact>[].obs;
   var deviceFilteredContacts = <Contact>[].obs;
-  final letterIndexMap = <String, int>{}.obs;
 
-
-/// Filters contacts based on the search query.
+  /// Filters contacts based on the search query.
   void applySearch(String searchQuery) {
     if (searchQuery.isEmpty) {
       deviceFilteredContacts.assignAll(deviceAllContacts);
     } else {
       deviceFilteredContacts.assignAll(
-        deviceAllContacts.where((c) => c.displayName
-            .toLowerCase()
-            .contains(searchQuery.toLowerCase())),
+        deviceAllContacts.where((c) =>
+            c.displayName.toLowerCase().contains(searchQuery.toLowerCase())),
       );
     }
-  
   }
 
-/// Ensures that the app has permission to access contacts.
+  /// Ensures that the app has permission to access contacts.
   void ensureContactsPermission({isSelect = false}) async {
     final contactPermission = Permission.contacts.status;
     if (await contactPermission.isDenied) {
@@ -49,30 +46,34 @@ class AppContactController extends GetxController {
     }
   }
 
-/// Loads contacts from the device and optionally shows the contact selection sheet.
+  /// Loads contacts from the device and optionally shows the contact selection sheet.
   Future<void> loadDeviceContacts({isSelected = false}) async {
     try {
       if (isSelected) {
         showContactSheet(
           filteredContacts: deviceFilteredContacts,
-          loadingContact: isLoading,
+          loadingContact: isLoadingDeviceContacts,
           onChangedSearch: (value) => applySearch(value.trim()),
         );
+      } else {
+        Get.toNamed(AppRoutes.contactAvatar);
       }
-      isLoading.value = true;
+      isLoadingDeviceContacts.value = true;
       final List<Contact> conts = await FlutterContacts.getContacts(
         withProperties: true,
         withPhoto: true,
         withThumbnail: true,
         sorted: true,
       );
-      deviceAllContacts.value= conts;
+      deviceAllContacts.value = conts
+      .where((item) {
+        return item.displayName.isNotEmpty && item.phones.isNotEmpty;
+      }).toList();
       deviceFilteredContacts.assignAll(deviceAllContacts);
-      
     } catch (e) {
       print(e.toString());
     } finally {
-      isLoading.value = false;
+      isLoadingDeviceContacts.value = false;
     }
   }
 }

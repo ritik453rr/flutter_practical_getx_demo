@@ -18,6 +18,7 @@ class AppColors {
   static const Color colorNeutralGray = Color.fromRGBO(140, 140, 140, 1.0);
   static const Color colorLightMint = Color.fromRGBO(243, 255, 252, 1);
   static const Color colorSlateGray = Color.fromRGBO(48, 48, 48, 1);
+  static const cF2F2F3 = Color(0xFFF2F2F3);
 
   /// Default Colors
   static const Color blue = Colors.blue;

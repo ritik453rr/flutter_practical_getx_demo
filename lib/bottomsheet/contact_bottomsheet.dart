@@ -15,10 +15,6 @@ List<AlphabetListViewItemGroup> groupContacts(
   final Map<String, List<Widget>> map = {};
   for (final contact in contacts) {
     final name = contact.displayName.trim();
-    final number = contact.phones.isNotEmpty
-        ? contact.phones.first.number.trim(): '';/// added to avoid empty number
-    if (name.isEmpty || number.isEmpty) continue;
-
     final key = name[0].toUpperCase();
 
     map.putIfAbsent(key, () => []);

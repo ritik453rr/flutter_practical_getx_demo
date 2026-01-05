@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_demo/features/contact/app_contact_controller.dart';
+import 'package:getx_demo/features/contact/controller/app_contact_controller.dart';
 
 class AppContactView extends StatelessWidget {
   AppContactView({super.key});
@@ -40,7 +40,9 @@ class AppContactView extends StatelessWidget {
           width: Get.width,
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             TextButton(
-                onPressed: controller.ensureContactsPermission,
+                onPressed: (){
+                  controller.ensureContactsPermission();
+                },
                 child: Text("Sync all")),
             TextButton(
                 onPressed: () {

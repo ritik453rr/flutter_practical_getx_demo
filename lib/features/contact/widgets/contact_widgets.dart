@@ -9,10 +9,7 @@ Widget contactAvatar({required String name, ImageProvider? image}) {
       shape: BoxShape.circle,
       color: const Color(0xFF8AA1D8), // soft blue like screenshot
       image: image != null
-          ? DecorationImage(
-            image: image, 
-          fit: BoxFit.cover,
-          )
+          ? DecorationImage(image: image, fit: BoxFit.cover)
           : null,
       boxShadow: [
         BoxShadow(
@@ -24,8 +21,7 @@ Widget contactAvatar({required String name, ImageProvider? image}) {
     ),
     child: image == null
         ? Text(
-          name,
-          
+            AppConstants.getInitials(name),
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w600,
