@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_demo/features/contact/controller/app_contact_controller.dart';
+import 'package:getx_demo/features/device_contacts/controller/app_contact_controller.dart';
 
 class AppContactView extends StatelessWidget {
   AppContactView({super.key});

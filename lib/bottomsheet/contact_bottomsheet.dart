@@ -5,7 +5,7 @@ import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/common_ui.dart';
 import 'package:getx_demo/extension/app_extension.dart';
 import 'package:getx_demo/app_constants.dart';
-import 'package:getx_demo/features/contact/widgets/contact_widgets.dart';
+import 'package:getx_demo/features/device_contacts/widgets/contact_widgets.dart';
 import 'package:alphabet_list_view/alphabet_list_view.dart';
 
 /// Groups contacts by the first letter of their display name.
@@ -24,7 +24,7 @@ List<AlphabetListViewItemGroup> groupContacts(
         contact: contact,
         isFirst: contact == contacts[0],
         isLast: contact == contacts[contacts.length - 1],
-      ), 
+      ),
     );
   }
 
@@ -139,7 +139,6 @@ Future<void> showContactSheet({
     ignoreSafeArea: false,
     enableDrag: false,
     SafeArea(
-      top: false,
       child: Container(
         width: Get.width,
         height: Get.height * 0.9,

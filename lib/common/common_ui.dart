@@ -1,9 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/app_fonts.dart';
 import 'package:getx_demo/app_constants.dart';
+import 'package:getx_demo/extension/app_extension.dart';
 
 class CommonUi {
   /// Set PNG image
@@ -84,6 +86,38 @@ class CommonUi {
     );
   }
 
+  /// Set Network Image
+  static Widget setNetworkImg(
+      {double borderRadius = 12,
+      String imgUrl = '',
+      double height = 50,
+      double width = 50,
+      BoxFit fit = BoxFit.cover}) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: CachedNetworkImage(
+        imageUrl: imgUrl,
+        height: height,
+        width: width,
+        fit: fit,
+        placeholder: (context, url) {
+          return Container(
+            height: height,
+            width: width,
+            color: Colors.white,
+          ).skeletonizerWidget(enabled: true);
+        },
+        errorWidget: (context, url, error) {
+          return Icon(
+            Icons.person,
+            size: height,
+            color: Colors.grey.withOpacity(0.5),
+          );
+        },
+      ),
+    );
+  }
+
   /// ON TAP EFFECT WIDGET.
   static Widget onTapEffect({
     BoxDecoration? decoration,
@@ -107,7 +141,11 @@ class CommonUi {
   }
 
   /// APP BUTTON WIDGET
-  static Widget appButton({required String title,void Function()? onTap,double width=0,double height=0}) {
+  static Widget appButton(
+      {required String title,
+      void Function()? onTap,
+      double width = 0,
+      double height = 0}) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
@@ -121,7 +159,7 @@ class CommonUi {
         },
         child: Text(
           title,
-          style:const TextStyle(fontSize: 16, color: Colors.white),
+          style: const TextStyle(fontSize: 16, color: Colors.white),
         ));
   }
 }

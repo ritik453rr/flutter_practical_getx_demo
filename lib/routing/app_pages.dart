@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
-import 'package:getx_demo/features/contact/controller/app_contact_controller.dart';
-import 'package:getx_demo/features/contact/view/app_contact_view.dart';
-import 'package:getx_demo/features/contact/view/avatar_view.dart';
+import 'package:getx_demo/features/device_contacts/controller/app_contact_controller.dart';
+import 'package:getx_demo/features/device_contacts/view/app_contact_view.dart';
+import 'package:getx_demo/features/device_contacts/view/avatar_view.dart';
+import 'package:getx_demo/features/device_contacts/view/selected_contacts_view.dart';
 import 'package:getx_demo/features/download_file/download_file_controller.dart';
 import 'package:getx_demo/features/download_file/download_file_view.dart';
 import 'package:getx_demo/features/home/home_controller.dart';
@@ -83,6 +84,11 @@ class AppPages {
     GetPage(
       name: AppRoutes.contactAvatar,
       page: () => ContactAvatarView(),
+    ),
+
+    GetPage(
+      name: AppRoutes.selectedContacts,
+      page: () => SelectedContactsView(),
     ),
   ];
 }

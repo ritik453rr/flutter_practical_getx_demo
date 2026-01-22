@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -14,6 +15,9 @@ class AppConstants {
   static const double bottomSpace = 20;
   static const tempPdfUrl =
       "https://www.ecma-international.org/wp-content/uploads/ECMA-262_12th_edition_june_2021.pdf";
+
+  static const tempImgUrl =
+      "https://images.pexels.com/photos/18907088/pexels-photo-18907088.jpeg";
 
 // Hides the keyboard by removing focus from the current input field
   static hideKeyBoard() {
@@ -50,6 +54,12 @@ class AppConstants {
       case 1:
         Get.updateLocale(Locale('hi', 'IN'));
     }
+  }
+
+  // Converts a non-null, non-empty image byte array into a Base64 string, or returns null if no image is available.
+  static String? encodeImage(Uint8List? bytes) {
+    if (bytes == null || bytes.isEmpty) return null;
+    return base64Encode(bytes);
   }
 
   /// Displays a dialog when permission is denied, allowing the user to open app settings

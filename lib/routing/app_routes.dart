@@ -11,4 +11,5 @@ class AppRoutes {
   static const appContact = '/appContact';
   static const userList = '/userList';
   static const contactAvatar='/contactAvatar';
+  static const selectedContacts='/selectedContacts';
 }

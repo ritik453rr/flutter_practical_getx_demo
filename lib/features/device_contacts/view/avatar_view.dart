@@ -4,8 +4,8 @@ import 'package:getx_demo/app_constants.dart';
 import 'package:getx_demo/common/app_colors.dart';
 import 'package:getx_demo/common/common_ui.dart';
 import 'package:getx_demo/extension/app_extension.dart';
-import 'package:getx_demo/features/contact/controller/app_contact_controller.dart';
-import 'package:getx_demo/features/contact/widgets/contact_widgets.dart';
+import 'package:getx_demo/features/device_contacts/controller/app_contact_controller.dart';
+import 'package:getx_demo/features/device_contacts/widgets/contact_widgets.dart';
 
 class ContactAvatarView extends StatelessWidget {
   ContactAvatarView({super.key});

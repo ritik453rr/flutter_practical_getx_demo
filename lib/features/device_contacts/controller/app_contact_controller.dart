@@ -1,11 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter_contacts/contact.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:getx_demo/Dialog/app_adaptive_dialog.dart';
+import 'package:getx_demo/app_constants.dart';
 import 'package:getx_demo/bottomsheet/contact_bottomsheet.dart';
 import 'package:getx_demo/routing/app_routes.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 
 class AppContactController extends GetxController {
   var isLoadingDeviceContacts = false.obs;
@@ -51,10 +55,13 @@ class AppContactController extends GetxController {
     try {
       if (isSelected) {
         showContactSheet(
-          filteredContacts: deviceFilteredContacts,
-          loadingContact: isLoadingDeviceContacts,
-          onChangedSearch: (value) => applySearch(value.trim()),
-        );
+            filteredContacts: deviceFilteredContacts,
+            loadingContact: isLoadingDeviceContacts,
+            onChangedSearch: (value) => applySearch(value.trim()),
+            onTapContinue: () {
+              AppConstants.hideKeyBoard();
+              Get.toNamed(AppRoutes.selectedContacts);
+            });
       } else {
         Get.toNamed(AppRoutes.contactAvatar);
       }
@@ -65,13 +72,11 @@ class AppContactController extends GetxController {
         withThumbnail: true,
         sorted: true,
       );
-      deviceAllContacts.value = conts
-      .where((item) {
+      deviceAllContacts.value = conts.where((item) {
         return item.displayName.isNotEmpty && item.phones.isNotEmpty;
       }).toList();
       deviceFilteredContacts.assignAll(deviceAllContacts);
     } catch (e) {
-      print(e.toString());
     } finally {
       isLoadingDeviceContacts.value = false;
     }
